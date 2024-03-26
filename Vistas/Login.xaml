@@ -30,7 +30,7 @@
                         <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
                         <Image HorizontalOptions="Center">
                             <Image.Source>
-                                <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
+                                <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
                         <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Number" Text="Ingrese su número" VerticalOptions="Center" />

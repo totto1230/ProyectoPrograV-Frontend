@@ -14,7 +14,14 @@ public partial class CrearNuevo : ContentPage
     public CrearNuevo()
 	{
 		InitializeComponent();
-	}
+
+        Picker picker = new Picker { Title = "Seleccione un rol" };
+        picker.ItemsSource = new List<string>
+{
+    "Usuario Regular",
+    "Driver"
+};
+    }
 
     private async void Registrar_Clicked(object sender, EventArgs e)
     {
