@@ -1,5 +1,5 @@
 using Login1.Models;
-using Login1.Models.Entidades;
+using Login1.Models;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -54,11 +54,11 @@ public partial class Login : ContentPage
                     DisplayAlert("SOMETHING WENT WRONG! ", res.Errors.First().ToString(), "OK");
                 }
             }
-            //else
-            //{
-            //    await DisplayAlert("Error de conexion" , "Error al encontrar el endpoint" , "Aceptar");
-            //}
-            
+            else
+            {
+                await DisplayAlert("Error de conexion", "Error al encontrar el endpoint", "Aceptar");
+            }
+
         }
         catch (Exception ex)
         {

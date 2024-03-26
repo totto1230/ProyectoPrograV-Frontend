@@ -32,7 +32,7 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry Grid.Column="1" Placeholder="Email" Text="Ingrese un email" VerticalOptions="Center" />
+                     <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="Email" Text="Ingrese un email" VerticalOptions="Center" />
                     </Grid>
                     <Grid Margin="0,30,0,0">
                         <Grid.ColumnDefinitions>
@@ -45,34 +45,26 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf007;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry Grid.Column="1" Placeholder="Nombre y Apellido" Text="Ingrese su nombre completo" VerticalOptions="Center" />
+                        <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="Nombre y Apellido" Text="Ingrese su nombre completo" VerticalOptions="Center" />
                     </Grid>
 
 
-                    <Grid Margin="0,30,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".2*" />
-                            <ColumnDefinition Width=".8*" />
-                        </Grid.ColumnDefinitions>
-                        <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
-                        <Image HorizontalOptions="Center">
-                            <Image.Source>
-                                <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
-                            </Image.Source>
-                        </Image>
-                        <Entry Grid.Column="1" Placeholder="Contraseña" IsPassword="True" Text="12345" VerticalOptions="Center" />
-                    </Grid>
+                <Grid Margin="0,30,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*" />
+                        <ColumnDefinition Width=".8*" />
+                    </Grid.ColumnDefinitions>
+                    <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
+                        </Image.Source>
+                    </Image>
+                    <Entry x:Name="PasswordTxt" Grid.Column="1" Placeholder="Contraseña" IsPassword="True" Text="12345" VerticalOptions="Center" />
+                </Grid>
 
-
-                
-                    <Button Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Crear su Cuenta" TextColor="Black" />
-
-
-
-               
-
-                   
-
+                <Button x:Name="Registrar" Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Crear su Cuenta" TextColor="Black" Clicked="Registrar_Clicked"/>
+                 
                 </VerticalStackLayout>
             </Grid>
         </Grid>
