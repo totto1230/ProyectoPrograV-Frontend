@@ -33,7 +33,7 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry Grid.Column="1" Placeholder="Email" Text="Ingrese su email" VerticalOptions="Center" />
+                        <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Number" Text="Ingrese su número" VerticalOptions="Center" />
                     </Grid>
 
                     <Grid Margin="0,30,0,0">
@@ -47,10 +47,10 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry Grid.Column="1" Placeholder="Contraseña" IsPassword="True" Text="12345" VerticalOptions="Center" />
+                        <Entry x:Name="PasswordTxt"  Grid.Column="1" Placeholder="Contraseña" IsPassword="True" Text="12345" VerticalOptions="Center" />
                     </Grid>
 
-                    <Button Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Login" TextColor="Black" />
+                    <Button x:Name ="LoginBoton" Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Login" TextColor="Black" Clicked="Login_Clicked" />
                     <Button x:Name="CreateAccount"
                             Clicked="CreateAccount_Clicked"
                         Margin="0,30,0,0" BackgroundColor="Grey" HeightRequest="40" Text="Cree una Cuenta" TextColor="Black"/>
