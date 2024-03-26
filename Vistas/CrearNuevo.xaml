@@ -19,9 +19,18 @@
 
                 <VerticalStackLayout Margin="30,0,30,0">
                     <Label FontAttributes="Bold" FontFamily="Bold" FontSize="Medium" Text="Cree su Cuenta" TextColor="Black" />
-                   
 
-                    <Grid Margin="0,30,0,0">
+
+                <Picker Title="Seleccione un rol">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Usuario Regular</x:String>
+                            <x:String>Driver</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Grid Margin="0,30,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width=".2*" />
                             <ColumnDefinition Width=".8*" />
@@ -47,7 +56,19 @@
                         </Image>
                         <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="Nombre y Apellido" Text="Ingrese su nombre completo" VerticalOptions="Center" />
                     </Grid>
-
+                <Grid Margin="0,30,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*" />
+                        <ColumnDefinition Width=".8*" />
+                    </Grid.ColumnDefinitions>
+                    <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
+                        </Image.Source>
+                    </Image>
+                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Number" Text="Ingrese su número" VerticalOptions="Center" />
+                </Grid>
 
                 <Grid Margin="0,30,0,0">
                     <Grid.ColumnDefinitions>
