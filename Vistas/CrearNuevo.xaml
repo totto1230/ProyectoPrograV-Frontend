@@ -21,9 +21,9 @@
                     <Label FontAttributes="Bold" FontFamily="Bold" FontSize="Medium" Text="Cree su Cuenta" TextColor="Black" />
 
 
-                <Picker Title="Seleccione un rol">
+                <Picker x:Name="TypeU" Title="Seleccione un rol" SelectedIndexChanged="TypeU_SelectedIndexChanged">
                     <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
+                        <x:Array x:Type="{x:Type x:String}">
                             <x:String>Usuario Regular</x:String>
                             <x:String>Driver</x:String>
                         </x:Array>
@@ -41,7 +41,7 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                     <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="Email" Text="Ingrese un email" VerticalOptions="Center" />
+                     <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="john@epoch-mobile.com" VerticalOptions="Center" />
                     </Grid>
                     <Grid Margin="0,30,0,0">
                         <Grid.ColumnDefinitions>
@@ -54,7 +54,7 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf007;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="Nombre y Apellido" Text="Ingrese su nombre completo" VerticalOptions="Center" />
+                        <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="John Doe" VerticalOptions="Center" />
                     </Grid>
                 <Grid Margin="0,30,0,0">
                     <Grid.ColumnDefinitions>
@@ -67,7 +67,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Number" Text="Ingrese su número" VerticalOptions="Center" />
+                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Number"  VerticalOptions="Center" />
                 </Grid>
 
                 <Grid Margin="0,30,0,0">
@@ -81,7 +81,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="PasswordTxt" Grid.Column="1" Placeholder="Contraseña" IsPassword="True" Text="12345" VerticalOptions="Center" />
+                    <Entry x:Name="PasswordTxt" Grid.Column="1" Placeholder="Secure Password" IsPassword="True" VerticalOptions="Center" />
                 </Grid>
 
                 <Button x:Name="Registrar" Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Crear su Cuenta" TextColor="Black" Clicked="Registrar_Clicked"/>

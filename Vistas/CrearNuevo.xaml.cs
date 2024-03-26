@@ -33,8 +33,8 @@ public partial class CrearNuevo : ContentPage
             req.user.Name = NombreTxt.Text;
             req.user.Password = PasswordTxt.Text;
             req.user.Email = EmailTxt.Text;
-            req.user.TypeU = 'a';
-            req.user.Number = "111111111";
+            req.user.TypeU = TypeU_SelectedIndexChanged();
+            req.user.Number = NumberTxt.Text;
             //req.user.TypeU = TypeUTxt.Text;
             //req.user.Number = NumberTxt.Text;
 
@@ -74,5 +74,21 @@ public partial class CrearNuevo : ContentPage
             DisplayAlert("UNEXPECTED ERROR! ", ex.ToString(), "OK!");
             throw;
         }
+    }
+
+    private char TypeU_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string typeUSelected = TypeU.SelectedItem as string;
+        char typeU = 'X';
+        if (typeUSelected == "Usuario Regular")
+        {
+            typeU = 'U';
+        }
+        else if(typeUSelected == "Driver")
+        {
+            typeU = 'D';
+        }
+
+        return typeU;
     }
 }
