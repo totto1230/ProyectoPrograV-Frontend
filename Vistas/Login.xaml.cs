@@ -62,7 +62,7 @@ public partial class Login : ContentPage
         }
         catch (Exception ex)
         {
-            DisplayAlert("UNEXPECTED ERROR! ", ex.ToString(), "Aceptar");
+            DisplayAlert("UNEXPECTED ERROR! ", ex.ToString(), "OK!");
             throw;
         }
 

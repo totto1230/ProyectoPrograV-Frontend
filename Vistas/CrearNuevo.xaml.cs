@@ -1,5 +1,6 @@
 using Login1.Models;
-using Login1.Models;
+using Login1.Models.Request;
+using Login1.Models.Response;
 using Newtonsoft.Json;
 using System;
 using System.Text;
@@ -25,6 +26,8 @@ public partial class CrearNuevo : ContentPage
             req.user.Name = NombreTxt.Text;
             req.user.Password = PasswordTxt.Text;
             req.user.Email = EmailTxt.Text;
+            req.user.TypeU = 'a';
+            req.user.Number = "111111111";
             //req.user.TypeU = TypeUTxt.Text;
             //req.user.Number = NumberTxt.Text;
 
@@ -43,8 +46,8 @@ public partial class CrearNuevo : ContentPage
 
                 if (res.Result)
                 {
-                    DisplayAlert("Welcome! ", res.Message.ToString(), "GO!");
-                    //@CHRISTOPER: AGREGAR PANTALLA DE PRODUCTOS
+                    DisplayAlert("Welcome! ", res.Message.ToString() + " YOU WILL BE REDIRECTED TO THE LOGIN, USE YOUR CREDENTIALS! ", "GO!");
+                    await Navigation.PushAsync(new Login());
 
                 }
                 else
@@ -61,7 +64,7 @@ public partial class CrearNuevo : ContentPage
         }
         catch (Exception ex)
         {
-            DisplayAlert("UNEXPECTED ERROR! ", ex.ToString(), "Aceptar");
+            DisplayAlert("UNEXPECTED ERROR! ", ex.ToString(), "OK!");
             throw;
         }
     }
