@@ -33,7 +33,7 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Ingrese su Numero" VerticalOptions="Center" />
+                        <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Ingrese su Numero" VerticalOptions="Center" TextColor="black" />
                     </Grid>
 
                     <Grid Margin="0,30,0,0">
@@ -47,16 +47,17 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry x:Name="PasswordTxt"  Grid.Column="1" Placeholder="Contraseña" IsPassword="True" VerticalOptions="Center" />
+                        <Entry x:Name="PasswordTxt"  Grid.Column="1" Placeholder="Contraseña" IsPassword="True" VerticalOptions="Center" TextColor="black" />
                     </Grid>
 
                     <Button x:Name ="LoginBoton" Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Login" TextColor="Black" Clicked="Login_Clicked" />
                     <Button x:Name="CreateAccount"
                             Clicked="CreateAccount_Clicked"
                         Margin="0,30,0,0" BackgroundColor="Grey" HeightRequest="40" Text="Cree una Cuenta" TextColor="Black"/>
-                    <Label Margin="0,20,0,-10" HorizontalOptions="Center" Text="Olvidó su Contraseña?" TextColor="Blue" TextDecorations="Underline" />
+                    <Button x:Name="OlvidoContrasena"
+                            Clicked="OlvidarContrasena_Clicked"
+                        Margin="0,30,0,0" BackgroundColor="White" HeightRequest="40" Text="Olvidó su Contraseña?" TextColor="Blue" />
 
-                  
                 </VerticalStackLayout>
             </Grid>
         </Grid>

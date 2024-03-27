@@ -1,12 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Login1.ViewModels"
+             xmlns:model="clr-namespace:Login1.Models"
+             x:DataType="viewmodel:ProductosViewModel"
              x:Class="Login1.Vistas.Desechables"
              Title="Desechables">
-    <VerticalStackLayout>
-        <Label 
-            Text="desechables!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*, Auto"
+          >
+
+        <CollectionView Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Productos}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Product">
+                    <Grid Padding="10" >
+                        <Frame HeightRequest="125" Padding="0">
+                            <Grid Padding="0"
+                                  ColumnDefinitions="125, *, *">
+                                <Image Aspect="AspectFill"
+                                   Source="boba.png"
+                                   WidthRequest="125"
+                                   HeightRequest="125"/>
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Padding="10"
+                                                     VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" />
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="$"/>
+                                                <Span Text="{Binding Precio}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                </VerticalStackLayout>
+                                <Label Grid.Column="2" Text="Agregar al carrito" HorizontalOptions="Center"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
 </ContentPage>

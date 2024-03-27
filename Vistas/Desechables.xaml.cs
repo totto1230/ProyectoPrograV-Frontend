@@ -1,3 +1,5 @@
+using Login1.ViewModels;
+
 namespace Login1.Vistas;
 
 public partial class Desechables : ContentPage
@@ -5,9 +7,11 @@ public partial class Desechables : ContentPage
 	public Desechables()
 	{
 		InitializeComponent();
-	}
-    private async void IrADesechables_Clicked(object sender, EventArgs e)
+        BindingContext = new ProductosViewModel();
+    }
+
+    protected override async void OnAppearing()
     {
-        await Navigation.PushAsync(new Desechables());
+        
     }
 }

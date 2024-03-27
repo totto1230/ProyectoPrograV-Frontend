@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Login1.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace Login1
 {
@@ -22,6 +23,7 @@ namespace Login1
     		builder.Logging.AddDebug();
 #endif
 
+            builder.Services.AddSingleton<ProductosViewModel>();
             return builder.Build();
         }
     }
