@@ -40,7 +40,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="john@epoch-mobile.com" VerticalOptions="Center" />
+                    <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="Ingrese su Email" VerticalOptions="Center" />
                 </Grid>
                 <Grid Margin="0,30,0,0">
                     <Grid.ColumnDefinitions>
@@ -53,7 +53,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf007;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="John Doe" VerticalOptions="Center" />
+                    <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="Nombre Completo" VerticalOptions="Center" />
                 </Grid>
                 <Grid Margin="0,30,0,0">
                     <Grid.ColumnDefinitions>
@@ -66,7 +66,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="123456789" VerticalOptions="Center" />
+                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Ingrese un Numero" VerticalOptions="Center" />
                 </Grid>
 
                 <Grid Margin="0,30,0,0">

@@ -46,7 +46,8 @@ public partial class Login : ContentPage
                 if (res.Result)
                 {
                     DisplayAlert("WELCOME! " , res.Message.ToString(), "GO!");
-                    //@CHRISTOPER: AGREGAR PANTALLA DE PRODUCTOS
+
+                    await Navigation.PushAsync(new MainPage());
 
                 }
                 else {

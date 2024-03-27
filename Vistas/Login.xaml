@@ -33,7 +33,7 @@
                                 <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                             </Image.Source>
                         </Image>
-                        <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="123456789" VerticalOptions="Center" />
+                        <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Ingrese su Numero" VerticalOptions="Center" />
                     </Grid>
 
                     <Grid Margin="0,30,0,0">

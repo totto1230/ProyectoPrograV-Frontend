@@ -1,0 +1,55 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login1.Vistas.Perfil"
+             Title="Perfil">
+
+    <Grid BackgroundColor="#f0f0f0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Contenido de perfil -->
+        <StackLayout Grid.Row="0" Margin="20" VerticalOptions="CenterAndExpand">
+            <!-- Imagen de perfil -->
+            <Image Source="perfil1.jpg" 
+                   WidthRequest="300" 
+                   HeightRequest="300" 
+                   Aspect="AspectFill" 
+                   HorizontalOptions="Center" />
+
+            <!-- Nombre de usuario -->
+            <Label Text="Nombre de Usuario" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <!-- Email -->
+            <Label Text="usuario@example.com" 
+                   FontSize="Medium" 
+                   FontAttributes="Italic" 
+                   HorizontalOptions="Center" />
+
+            <!-- Botón de cerrar sesión -->
+            <ImageButton Grid.Row="1"
+                         Source="salida.png" 
+                         Clicked="CerrarSesion_Clicked" 
+                         BackgroundColor="Transparent" 
+                         HeightRequest="70" 
+                         WidthRequest="150" 
+                         HorizontalOptions="Center"
+                         Margin="0,20,0,20" />
+        </StackLayout>
+
+        <!-- Barra de navegación -->
+        <Frame Grid.Row="2" BackgroundColor="LightBlue" Padding="10" HasShadow="True">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" Spacing="30">
+                <ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" Clicked="IrAMainPage_Clicked" HorizontalOptions="Center" />
+                <ImageButton Source="carrito.png" HeightRequest="40" WidthRequest="90" Clicked="IrACarrito_Clicked" HorizontalOptions="Center" />
+                <ImageButton Source="usuario.png" Clicked="IrAPerfil_Clicked" HeightRequest="40" WidthRequest="90" HorizontalOptions="Center" />
+            </StackLayout>
+        </Frame>
+    </Grid>
+
+</ContentPage>
