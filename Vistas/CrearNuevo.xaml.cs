@@ -1,8 +1,8 @@
 using Login1.Models;
 using Login1.Models.Request;
-using Login1.Models.Response;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -28,16 +28,14 @@ public partial class CrearNuevo : ContentPage
     {
         try
         {
+            string? typeUConvert = typeU.SelectedItem.ToString();
             RequestRegistration req = new RequestRegistration();
             req.user = new User();
             req.user.Name = NombreTxt.Text;
             req.user.Password = PasswordTxt.Text;
             req.user.Email = EmailTxt.Text;
-            req.user.TypeU = TypeU_SelectedIndexChanged();
+            req.user.TypeU = GetTypeU(typeUConvert);
             req.user.Number = NumberTxt.Text;
-            //req.user.TypeU = TypeUTxt.Text;
-            //req.user.Number = NumberTxt.Text;
-
 
             var jsonContent = new StringContent(JsonConvert.SerializeObject(req), Encoding.UTF8, "application/json");
 
@@ -76,19 +74,24 @@ public partial class CrearNuevo : ContentPage
         }
     }
 
-    private char TypeU_SelectedIndexChanged(object sender, EventArgs e)
+    private char GetTypeU(string? typeUConvert)
     {
-        string typeUSelected = TypeU.SelectedItem as string;
         char typeU = 'X';
-        if (typeUSelected == "Usuario Regular")
+        if (typeUConvert == "Usuario Regular")
         {
             typeU = 'U';
         }
-        else if(typeUSelected == "Driver")
+        else if (typeUConvert == "Driver")
         {
             typeU = 'D';
         }
 
         return typeU;
     }
+
+    //private void TypeU_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    char typeU = GetTypeU();
+    //    // Now you can use 'typeU' as needed
+    //}
 }

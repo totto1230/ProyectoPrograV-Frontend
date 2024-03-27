@@ -5,25 +5,24 @@
              Title="CrearNuevo">
 
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height=".3*" />
-                <RowDefinition Height=".8*" />
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".3*" />
+            <RowDefinition Height=".8*" />
+        </Grid.RowDefinitions>
 
-            <Image Aspect="AspectFit" Source="epo.png"/>
-            <Grid BackgroundColor="LimeGreen" Opacity=".12" />
+        <Image Aspect="AspectFit" Source="epo.png"/>
+        <Grid BackgroundColor="LimeGreen" Opacity=".12" />
 
-            <Grid Grid.Row="1">
-                <RoundRectangle Margin="-5,-30,-5,-2" CornerRadius="30,30,0,0" Fill="White" />
+        <Grid Grid.Row="1">
+            <RoundRectangle Margin="-5,-30,-5,-2" CornerRadius="30,30,0,0" Fill="White" />
 
-                <VerticalStackLayout Margin="30,0,30,0">
-                    <Label FontAttributes="Bold" FontFamily="Bold" FontSize="Medium" Text="Cree su Cuenta" TextColor="Black" />
+            <VerticalStackLayout Margin="30,0,30,0">
+                <Label FontAttributes="Bold" FontFamily="Bold" FontSize="Medium" Text="Cree su Cuenta" TextColor="Black" />
 
-
-                <Picker x:Name="TypeU" Title="Seleccione un rol" SelectedIndexChanged="TypeU_SelectedIndexChanged">
+                <Picker x:Name="typeU" Title="Seleccione un rol">
                     <Picker.ItemsSource>
-                        <x:Array x:Type="{x:Type x:String}">
+                        <x:Array Type="{x:Type x:String}">
                             <x:String>Usuario Regular</x:String>
                             <x:String>Driver</x:String>
                         </x:Array>
@@ -31,31 +30,31 @@
                 </Picker>
 
                 <Grid Margin="0,30,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".2*" />
-                            <ColumnDefinition Width=".8*" />
-                        </Grid.ColumnDefinitions>
-                        <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
-                        <Image HorizontalOptions="Center">
-                            <Image.Source>
-                                <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
-                            </Image.Source>
-                        </Image>
-                     <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="john@epoch-mobile.com" VerticalOptions="Center" />
-                    </Grid>
-                    <Grid Margin="0,30,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".2*" />
-                            <ColumnDefinition Width=".8*" />
-                        </Grid.ColumnDefinitions>
-                        <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
-                        <Image HorizontalOptions="Center">
-                            <Image.Source>
-                                <FontImageSource FontFamily="Awesome" Glyph="&#xf007;" Size="42" Color="Black" />
-                            </Image.Source>
-                        </Image>
-                        <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="John Doe" VerticalOptions="Center" />
-                    </Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*" />
+                        <ColumnDefinition Width=".8*" />
+                    </Grid.ColumnDefinitions>
+                    <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
+                        </Image.Source>
+                    </Image>
+                    <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="john@epoch-mobile.com" VerticalOptions="Center" />
+                </Grid>
+                <Grid Margin="0,30,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*" />
+                        <ColumnDefinition Width=".8*" />
+                    </Grid.ColumnDefinitions>
+                    <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource FontFamily="Awesome" Glyph="&#xf007;" Size="42" Color="Black" />
+                        </Image.Source>
+                    </Image>
+                    <Entry x:Name="NombreTxt" Grid.Column="1" Placeholder="John Doe" VerticalOptions="Center" />
+                </Grid>
                 <Grid Margin="0,30,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width=".2*" />
@@ -67,7 +66,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Number"  VerticalOptions="Center" />
+                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="123456789" VerticalOptions="Center" />
                 </Grid>
 
                 <Grid Margin="0,30,0,0">
@@ -81,13 +80,13 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="PasswordTxt" Grid.Column="1" Placeholder="Secure Password" IsPassword="True" VerticalOptions="Center" />
+                    <Entry x:Name="PasswordTxt" Grid.Column="1" Placeholder="Password" IsPassword="True" VerticalOptions="Center" />
                 </Grid>
 
                 <Button x:Name="Registrar" Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Crear su Cuenta" TextColor="Black" Clicked="Registrar_Clicked"/>
-                 
-                </VerticalStackLayout>
-            </Grid>
+
+            </VerticalStackLayout>
         </Grid>
-   
+    </Grid>
+
 </ContentPage>

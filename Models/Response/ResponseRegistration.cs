@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Login1.Models.Response
+namespace Login1.Models
 {
     public class ResponseRegistration : ResponseBase
     {
