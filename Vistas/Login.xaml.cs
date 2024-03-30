@@ -8,7 +8,7 @@ namespace Login1.Vistas;
 
 public partial class Login : ContentPage
 {
-    string url = "https://proyectov-api20240325195643.azurewebsites.net/";
+    string url = "https://testing-proyecto.azurewebsites.net/";
 
     public Login()
 	{
