@@ -1,5 +1,4 @@
 using Login1.Models;
-using Login1.Models;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -8,7 +7,7 @@ namespace Login1.Vistas;
 
 public partial class Login : ContentPage
 {
-    string url = "https://proyectov-api20240325195643.azurewebsites.net/";
+    string url = "http://4.255.16.1/";
 
     public Login()
 	{
@@ -46,6 +45,15 @@ public partial class Login : ContentPage
                 if (res.Result)
                 {
                     DisplayAlert("WELCOME! " , res.Message.ToString(), "GO!");
+
+                    //if (res.User.IsDriver)
+                    //{
+                    //    await Navigation.PushAsync(new MainPageDriver());
+                    //}
+                    //else
+                    //{
+                    //    await Navigation.PushAsync(new MainPage());
+                    //}
 
                     await Navigation.PushAsync(new MainPage());
 

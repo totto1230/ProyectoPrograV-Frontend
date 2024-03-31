@@ -6,7 +6,7 @@ namespace Login1
     {
         int count = 0;
 
-        public MainPage(ProductosViewModel productosViewModel)
+        public MainPage()
         {
             InitializeComponent();
         }
