@@ -1,5 +1,6 @@
 using Login1.Models;
 using Login1.Models.Request;
+using Login1.Models.Response;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
@@ -10,7 +11,7 @@ namespace Login1.Vistas;
 
 public partial class CrearNuevo : ContentPage
 {
-    string url = "https://testing-proyecto.azurewebsites.net/";
+    string url = "http://172.210.102.217/";
   
     public CrearNuevo()
 	{
