@@ -1,5 +1,6 @@
 using Login1.Models;
 using Login1.Models;
+using Login1.Utilidades;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -46,8 +47,19 @@ public partial class Login : ContentPage
                 if (res.Result)
                 {
                     DisplayAlert("WELCOME! " , res.Message.ToString(), "GO!");
+                    Session.name = res.name;
+                    Session.typeU = res.typeU;
 
-                    await Navigation.PushAsync(new MainPage());
+                    //Pantalla Christopher
+                    if (0 == 9) //Session.typeU == 'D')
+                    {
+                        //await Navigation.PushAsync(new MainPage());
+                        //Driver Page
+                    }
+                    else if (Session.typeU == 'U')
+                    {
+                        await Navigation.PushAsync(new MainPage());
+                    }   
 
                 }
                 else {

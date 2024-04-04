@@ -8,5 +8,8 @@ namespace Login1.Models
 {
     public class ResponseLogin : ResponseBase
     {
+        public string name { get; set; }
+
+        public char? typeU { get; set; }
     }
 }
