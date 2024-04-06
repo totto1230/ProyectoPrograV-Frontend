@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login1.Vistas.OlvidoContrasenaCode"
+             Title="OlvidoContrasenaCode">
+    <VerticalStackLayout>
+        <Grid Margin="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".2*" />
+                <ColumnDefinition Width=".8*" />
+            </Grid.ColumnDefinitions>
+            <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
+            <Image HorizontalOptions="Center">
+                <Image.Source>
+                    <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
+                </Image.Source>
+            </Image>
+            <Entry x:Name="Code" Grid.Column="1" Placeholder="Code" VerticalOptions="Center" TextColor="Black" Text="1"/>
+        </Grid>
+        <Button x:Name="Resetear" Margin="0,20,0,0" BackgroundColor="LimeGreen" HeightRequest="40" Text="Validar Datos" TextColor="Black" Clicked="Resetear_Clicked"      />
+    </VerticalStackLayout>
+</ContentPage>

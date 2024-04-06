@@ -83,6 +83,9 @@
 	  <MauiXaml Update="Vistas\OlvidoContrasena.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Vistas\OlvidoContrasenaCode.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Vistas\TodosProductos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

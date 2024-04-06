@@ -7,25 +7,24 @@ namespace Login1.Vistas;
 
 public partial class OlvidoContrasena : ContentPage
 {
-    string url = "http://172.210.102.217/";
+    string url = "https://proyectov-api20240405215800.azurewebsites.net/";
 
     public OlvidoContrasena()
 	{
-		InitializeComponent();
+        InitializeComponent();
 	}
 
     private async void Resetear_Clicked(object sender, EventArgs e)
     {
 		try
 		{
-			RequestPasswordReset req = new RequestPasswordReset();
+            HttpClient httpClient = new HttpClient();
+            RequestPasswordReset req = new RequestPasswordReset();
             req.reset = new Models.Entidades.PasswordReset();
 			req.reset.Number = NumberTxtReset.Text;
 			req.reset.Email = EmailTxtReset.Text;
 			req.reset.Password = PasswordTxtReset.Text;
             var jsonContent = new StringContent(JsonConvert.SerializeObject(req), Encoding.UTF8, "application/json");
-
-            HttpClient httpClient = new HttpClient();
             var response = await httpClient.PostAsync(url + "api/Users/passwordReset", jsonContent);
 
             if (response.IsSuccessStatusCode)
@@ -36,8 +35,9 @@ public partial class OlvidoContrasena : ContentPage
 
                 if (res.Result)
                 {
-                    DisplayAlert(" ", res.Message.ToString() + " PASSWORD UPDATED SUCCESSFULLY! ", "GO!");
-                    await Navigation.PushAsync(new Login());
+                    DisplayAlert(" ", "Validated correctly! Proceed with the recover", "GO!");
+
+                    await Navigation.PushAsync(new OlvidoContrasenaCode());
                 }
                 else
                 {
