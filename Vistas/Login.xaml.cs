@@ -51,10 +51,11 @@ public partial class Login : ContentPage
                     Session.typeU = res.typeU;
 
                     //Pantalla Christopher
-                    if (0 == 9) //Session.typeU == 'D')
+                    if (Session.typeU == 'D')
                     {
-                        //await Navigation.PushAsync(new MainPage());
                         //Driver Page
+                        await Navigation.PushAsync(new MainPageDriver());
+                        
                     }
                     else if (Session.typeU == 'U')
                     {

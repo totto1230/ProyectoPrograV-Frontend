@@ -43,6 +43,7 @@ public partial class OlvidoContrasenaCode : ContentPage
 
                 if (res1.Result)
                 {
+                    DisplayAlert(" ", " Successfully changed password! Lets use your new password. ", "OK");
                     await Navigation.PushAsync(new Login());
                 }
                 else
