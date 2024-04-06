@@ -2,12 +2,13 @@ using Login1.Models.Request;
 using Login1.Models.Response;
 using Newtonsoft.Json;
 using System.Text;
+using Login1.Utilidades;
 
 namespace Login1.Vistas;
 
 public partial class OlvidoContrasenaCode : ContentPage
 {
-    string url = "https://proyectov-api20240405215800.azurewebsites.net/";
+    string url = Url.url;
 
     public OlvidoContrasenaCode()
 	{
@@ -21,17 +22,19 @@ public partial class OlvidoContrasenaCode : ContentPage
             HttpClient httpClient = new HttpClient();
             ResponseCodigoEmail res1 = new ResponseCodigoEmail();
             //Code.IsEnabled = true;
-            int code = Int32.Parse(Code.Text);
+            int code = 1;
             RequestCodigo req1 = new RequestCodigo();
+
             if (code == 1)
             {
-                DisplayAlert(" ", " Enter the code sent to your email ", " OK! ");
                 code = Int32.Parse(Code.Text);
-                req1.codigo = code;
+                
             }
 
+            req1.codigo = code;
             var jsonContent1 = new StringContent(JsonConvert.SerializeObject(req1), Encoding.UTF8, "application/json");
             var response1 = await httpClient.PostAsync(url + "api/Users/passwordReset/Code", jsonContent1);
+
             if (response1.IsSuccessStatusCode)
             {
                 
@@ -55,8 +58,8 @@ public partial class OlvidoContrasenaCode : ContentPage
         }
 		catch (Exception ex)
 		{
-
-			throw;
+            DisplayAlert("UNEXPECTED ERROR! ", ex.ToString(), "OK!");
+            throw;
 		}
     }
 }

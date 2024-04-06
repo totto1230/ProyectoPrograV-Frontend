@@ -2,12 +2,13 @@ using Login1.Models.Request;
 using Login1.Models.Response;
 using Newtonsoft.Json;
 using System.Text;
+using Login1.Utilidades;
 
 namespace Login1.Vistas;
 
 public partial class OlvidoContrasena : ContentPage
 {
-    string url = "https://proyectov-api20240405215800.azurewebsites.net/";
+    string url = Url.url;
 
     public OlvidoContrasena()
 	{
@@ -24,11 +25,13 @@ public partial class OlvidoContrasena : ContentPage
 			req.reset.Number = NumberTxtReset.Text;
 			req.reset.Email = EmailTxtReset.Text;
 			req.reset.Password = PasswordTxtReset.Text;
+            req.reset.Codigo = 1;
             var jsonContent = new StringContent(JsonConvert.SerializeObject(req), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(url + "api/Users/passwordReset", jsonContent);
-
+            
             if (response.IsSuccessStatusCode)
             {
+             
                 ResponsePasswordReset res = new ResponsePasswordReset();
                 var responsePwReset = await response.Content.ReadAsStringAsync();
                 res = JsonConvert.DeserializeObject<ResponsePasswordReset>(responsePwReset);

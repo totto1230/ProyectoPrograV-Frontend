@@ -10,6 +10,8 @@ namespace Login1.Models.Entidades
     {
         public int codigo { get; set; }
 
+        public static int codigoRa { get; set; }
+
         public static string email { get; set; }
 
         public static string number { get; set; }

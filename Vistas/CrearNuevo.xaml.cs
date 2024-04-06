@@ -6,12 +6,13 @@ using System;
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Serialization;
+using Login1.Utilidades;
 
 namespace Login1.Vistas;
 
 public partial class CrearNuevo : ContentPage
 {
-    string url = "http://172.210.102.217/";
+    string url = Url.url;
   
     public CrearNuevo()
 	{

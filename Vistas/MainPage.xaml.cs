@@ -2,12 +2,13 @@ using Login1.Models.Request;
 using Login1.Models.Response;
 using Newtonsoft.Json;
 using System.Text;
+using Login1.Utilidades;
 
 namespace Login1.Vistas;
 
 public partial class MainPage : ContentPage
 {
-    string url = "http://172.210.102.217/";
+    string url = Url.url;
 
     public MainPage()
 	{

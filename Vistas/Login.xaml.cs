@@ -9,7 +9,7 @@ namespace Login1.Vistas;
 
 public partial class Login : ContentPage
 {
-    string url = "http://172.210.102.217/";
+    string url = Url.url;
 
     public Login()
 	{
