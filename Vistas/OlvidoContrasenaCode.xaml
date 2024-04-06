@@ -12,7 +12,7 @@
             <RoundRectangle BackgroundColor="LimeGreen" CornerRadius="10" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60"/>
             <Image HorizontalOptions="Center">
                 <Image.Source>
-                    <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
+                    <FontImageSource FontFamily="Awesome" Glyph="&#xf145;" Size="42" Color="Black" />
                 </Image.Source>
             </Image>
             <Entry x:Name="Code" Grid.Column="1" Placeholder="Code" VerticalOptions="Center" TextColor="Black" Text="1"/>

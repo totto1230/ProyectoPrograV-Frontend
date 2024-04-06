@@ -7,7 +7,7 @@ public partial class Desechables : ContentPage
 	public Desechables()
 	{
 		InitializeComponent();
-        BindingContext = new ProductosViewModel();
+        BindingContext = new DesechablesViewModel();
     }
 
     protected override async void OnAppearing()

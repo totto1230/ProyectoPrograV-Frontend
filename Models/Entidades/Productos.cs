@@ -12,6 +12,7 @@ namespace Login1.Models.Entidades
         public string[] Name { get; set; }
         public int?[] Cantidad { get; set; }
         public decimal?[] Precio { get; set; }
+        public char?[] Categoria { get; set; }
 
     }
 }

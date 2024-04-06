@@ -2,11 +2,63 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login1.Vistas.TodosProductos"
+             xmlns:viewmodel="clr-namespace:Login1.ViewModels"
+             xmlns:model="clr-namespace:Login1.Models"
+             x:DataType="viewmodel:TodosLosProductosViewModel"
              Title="TodosProductos">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*, Auto"
+          >
+
+        <CollectionView Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Productos}"
+                        SelectionMode="None">
+            <CollectionView.Footer>
+                <StackLayout Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20">
+                    <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
+                            <!--<ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" Clicked="IrAMainPage_Clicked"/>
+                            <ImageButton Source="carrito.png" HeightRequest="40" WidthRequest="90" Clicked="IrACarrito_Clicked"/>
+                            <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" Clicked="IrAPerfil_Clicked"/>-->
+                            <ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" />
+                            <ImageButton Source="carrito.png" HeightRequest="40" WidthRequest="90" />
+                            <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </CollectionView.Footer>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Product">
+                    <Grid Padding="10" >
+                        <Frame HeightRequest="125" Padding="0">
+                            <Grid Padding="0"
+                                  ColumnDefinitions="125, *, *">
+                                <Image Aspect="AspectFill"
+                                   Source="boba.png"
+                                   WidthRequest="125"
+                                   HeightRequest="125"/>
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Padding="10"
+                                                     VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" />
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="$"/>
+                                                <Span Text="{Binding Precio}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding Categoria}" />
+                                </VerticalStackLayout>
+                                <Label Grid.Column="2" Text="Agregar al carrito" HorizontalOptions="Center"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>

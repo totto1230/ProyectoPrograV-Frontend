@@ -23,7 +23,7 @@ namespace Login1
     		builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddSingleton<ProductosViewModel>();
+            builder.Services.AddSingleton<TodosLosProductosViewModel>();
             return builder.Build();
         }
     }

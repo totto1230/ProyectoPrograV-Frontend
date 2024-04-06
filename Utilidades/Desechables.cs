@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Login1.Utilidades
 {
-    public class Url
+    public class Desechables
     {
-        public static string url = "https://proyectov-api20240406145416.azurewebsites.net/";
+
     }
+
 }

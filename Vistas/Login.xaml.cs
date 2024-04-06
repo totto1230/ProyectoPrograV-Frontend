@@ -60,7 +60,15 @@ public partial class Login : ContentPage
                     else if (Session.typeU == 'U')
                     {
                         await Navigation.PushAsync(new MainPage());
-                    }   
+                    }
+                    else if (Session.typeU == 'A')
+                    {
+                        await Navigation.PushAsync(new MainPageAdmin());
+                    }
+                    else
+                    {
+                        DisplayAlert("SOMETHING WENT WRONG! ", " Invalid User type", "OK");
+                    }
 
                 }
                 else {

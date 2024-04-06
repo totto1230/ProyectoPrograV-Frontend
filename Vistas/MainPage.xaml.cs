@@ -60,6 +60,7 @@ public partial class MainPage : ContentPage
                 }
                 else
                 {
+                    ProductosDisponibles.productos = res.productos;
                     await Navigation.PushAsync(new TodosProductos());
                 }
             }
