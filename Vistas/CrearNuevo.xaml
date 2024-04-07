@@ -40,7 +40,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="EmailTxt" Grid.Column="1" Placeholder="Ingrese su Email" VerticalOptions="Center" TextColor="Black"/>
+                    <Entry x:Name="EmailTxt" Grid.Column="1" Keyboard="Email" Placeholder="Ingrese su Email" VerticalOptions="Center" TextColor="Black"/>
                 </Grid>
                 <Grid Margin="0,30,0,0">
                     <Grid.ColumnDefinitions>
@@ -66,7 +66,7 @@
                             <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                         </Image.Source>
                     </Image>
-                    <Entry x:Name="NumberTxt" Grid.Column="1" Placeholder="Ingrese un Numero" VerticalOptions="Center" TextColor="Black"/>
+                    <Entry x:Name="NumberTxt" Grid.Column="1" Keyboard="Numeric" Placeholder="Ingrese un Numero" VerticalOptions="Center" TextColor="Black"/>
                 </Grid>
 
                 <Grid Margin="0,30,0,0">
