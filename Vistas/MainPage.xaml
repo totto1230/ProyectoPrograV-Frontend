@@ -36,10 +36,13 @@
             <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Spacing="10">
                 <Label Text="Categorías" FontSize="Large" TextDecorations="Underline" HorizontalOptions="Center"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30">
+                    <!-- Primer botón -->
                     <Button x:Name="TodosLosProductos" Text="Todos los Productos" BorderColor="Black" BorderWidth="1" BackgroundColor="LightSkyBlue" TextColor="Black" Clicked="TodosLosProductos_Clicked"/>
+                    <!-- Segundo botón -->
                     <Button Text="Desechables" BorderColor="Black" BorderWidth="1" BackgroundColor="LightSkyBlue" TextColor="Black" Clicked="IrADesechables_Clicked"/>
-                    <Button Text="Otros Productos" BorderColor="Black" BorderWidth="1" BackgroundColor="LightSkyBlue" TextColor="Black" Clicked="IrAOtrosProductos_Clicked"/>
                 </StackLayout>
+                <!-- Tercer botón debajo -->
+                <Button Text="Otros Productos" BorderColor="Black" BorderWidth="1" BackgroundColor="LightSkyBlue" TextColor="Black" Clicked="IrAOtrosProductos_Clicked" HorizontalOptions="Center"/>
             </StackLayout>
 
             <!-- Mejores Productos -->
