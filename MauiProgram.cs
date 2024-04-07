@@ -24,6 +24,7 @@ namespace Login1
 #endif
 
             builder.Services.AddSingleton<TodosLosProductosViewModel>();
+            builder.Services.AddSingleton<MainDriverViewModel>();
             return builder.Build();
         }
     }

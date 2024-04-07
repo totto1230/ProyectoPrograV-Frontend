@@ -64,6 +64,8 @@
 	  <None Remove="Resources\Images\boba.png" />
 	  <None Remove="Resources\Images\epo.png" />
 	  <None Remove="Resources\Images\epo2.png" />
+	  <None Remove="Resources\Images\SanJoseMap.PNG" />
+
 	</ItemGroup>
 
 	<ItemGroup>

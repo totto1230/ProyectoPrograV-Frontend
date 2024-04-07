@@ -1,6 +1,7 @@
 using Login1.Models;
 using Login1.Models;
 using Login1.Utilidades;
+using Login1.ViewModels;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -14,8 +15,6 @@ public partial class Login : ContentPage
     public Login()
 	{
 		InitializeComponent();
-
-       
     }
 
     private async void CreateAccount_Clicked(object sender, EventArgs e)
