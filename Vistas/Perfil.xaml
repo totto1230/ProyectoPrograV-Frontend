@@ -20,13 +20,13 @@
                    HorizontalOptions="Center" />
 
             <!-- Nombre de usuario -->
-            <Label Text="Nombre de Usuario" 
+            <Label x:Name="Name"  
                    FontSize="Large" 
                    FontAttributes="Bold" 
                    HorizontalOptions="Center" />
 
             <!-- Email -->
-            <Label Text="usuario@example.com" 
+            <Label x:Name="Email"  
                    FontSize="Medium" 
                    FontAttributes="Italic" 
                    HorizontalOptions="Center" />

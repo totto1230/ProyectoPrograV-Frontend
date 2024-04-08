@@ -1,3 +1,5 @@
+using Login1.Utilidades;
+
 namespace Login1.Vistas;
 
 public partial class Perfil : ContentPage
@@ -5,7 +7,9 @@ public partial class Perfil : ContentPage
 	public Perfil()
 	{
 		InitializeComponent();
-	}
+        Name.Text = Session.name;
+        Email.Text = Session.email;
+    }
 
     private async void IrACarrito_Clicked(object sender, EventArgs e)
     {

@@ -11,5 +11,7 @@ namespace Login1.Models
         public string name { get; set; }
 
         public char? typeU { get; set; }
+
+        public string email { get; set; }
     }
 }

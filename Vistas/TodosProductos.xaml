@@ -52,8 +52,9 @@
                                     </Label>
                                     <Label Text="{Binding Categoria}" />
                                 </VerticalStackLayout>
-                                <Label Grid.Column="2" Text="Agregar al carrito" HorizontalOptions="Center"
-                                        VerticalOptions="Center"/>
+                                <Button x:Name="AgregarCarrito" Grid.Column="2" Text="Comprar" HorizontalOptions="Center"
+         VerticalOptions="Center" Clicked="AgregarCarrito_Clicked"    />
+
                             </Grid>
                         </Frame>
                     </Grid>

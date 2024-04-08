@@ -1,5 +1,6 @@
 using Login1.Models;
 using Login1.Models;
+using Login1.Models.Response;
 using Login1.Utilidades;
 using Login1.ViewModels;
 using Newtonsoft.Json;
@@ -48,6 +49,7 @@ public partial class Login : ContentPage
                     DisplayAlert("WELCOME! " , res.Message.ToString(), "GO!");
                     Session.name = res.name;
                     Session.typeU = res.typeU;
+                    Session.email = res.email;
 
                     //Pantalla Christopher
                     if (Session.typeU == 'D')
@@ -58,7 +60,25 @@ public partial class Login : ContentPage
                     }
                     else if (Session.typeU == 'U')
                     {
-                        await Navigation.PushAsync(new MainPage());
+                        var response1 = await httpClient.GetAsync(url + "api/Productos/obtener");
+
+                        if (response1.IsSuccessStatusCode)
+                        {
+                            ResponseProductos res1 = new ResponseProductos();
+                            var responseProductos = await response1.Content.ReadAsStringAsync();
+                            res1 = JsonConvert.DeserializeObject<ResponseProductos>(responseProductos);
+
+                            if (!res.Result)
+                            {
+                                DisplayAlert("SOMETHING WENT WRONG! ", res.Errors.First().ToString(), "OK");
+
+                            }
+                            else
+                            {
+                                ProductosDisponibles.productos = res1.productos;
+                            }
+                            await Navigation.PushAsync(new MainPage());
+                        }
                     }
                     else if (Session.typeU == 'A')
                     {
