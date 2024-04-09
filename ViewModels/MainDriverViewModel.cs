@@ -58,32 +58,43 @@ namespace Login1.ViewModels
             MostrarBuscarOrden = true;
         }
 
+        [RelayCommand]
+        public async Task TerminarViaje()
+        {
+            Productos.Clear();
+            MostrarSpinner = true;
+            MostrarOrdenAceptada = false;
+            await Task.Delay(2000);
+            MostrarSpinner = false;
+            MostrarBuscarOrden = true;
+        }
+
         private void LlenarProductosOrden()
         {
             Productos.Clear();
             Productos.Add(new Product
             {
-                Name = "Producto 1",
+                Name = "Rose Milk Tea",
                 Cantidad = 2,
             });
             Productos.Add(new Product
             {
-                Name = "Producto 2",
+                Name = "Lavender Milk",
                 Cantidad = 1,
             });
             Productos.Add(new Product
             {
-                Name = "Producto 3",
+                Name = "Almond Milk",
                 Cantidad = 2,
             });
             Productos.Add(new Product
             {
-                Name = "Producto 4",
+                Name = "Honey Lemonade",
                 Cantidad = 3,
             });
             Productos.Add(new Product
             {
-                Name = "Producto 5",
+                Name = "Jasmine Tea",
                 Cantidad = 1,
             });
 

@@ -11,13 +11,17 @@
     <Grid RowDefinitions="*,70,70"
           ColumnDefinitions="*,*"
           RowSpacing="50"
-          Padding="50">
-        <Image Source="destino.png" Grid.ColumnSpan="2" Grid.RowSpan="3" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarOrdenAceptada}"/>
+          ColumnSpacing="5"
+          Padding="15">
+        <!-- Estado mostrarOrdenAceptada -->
+        <Image Source="destino.png" Grid.ColumnSpan="2" Grid.RowSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarOrdenAceptada}"/>
+        <Button Grid.Row="2" Grid.Column="1" Text="Terminar viaje" BackgroundColor="LightGreen" IsVisible="{Binding MostrarOrdenAceptada}" Command="{Binding TerminarViajeCommand}"/>
+
         <!-- Estado mostrarBuscarOrden -->
-        <Image Source="sanjosemap.png" Grid.ColumnSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarBuscarOrden}"/>
+        <Image Source="sanjosemap.png" Grid.ColumnSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarBuscarOrden}" />
         <Button Grid.Row="1" Grid.ColumnSpan="2" Text="Buscar viajes" BackgroundColor="LightGreen" 
                 Command="{Binding ToggleMostrarSpinnerCommand}"
-                IsVisible="{Binding MostrarBuscarOrden}"/>
+                IsVisible="{Binding MostrarBuscarOrden}" Padding="5"/>
         <ActivityIndicator 
             IsRunning="{Binding MostrarSpinner}"
             IsVisible="{Binding MostrarSpinner}"
@@ -30,7 +34,7 @@
         <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20" IsVisible="{Binding MostrarBuscarOrden}">
             <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
-                    <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" />
+                    <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" Clicked="IrAPerfil_Clicked"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

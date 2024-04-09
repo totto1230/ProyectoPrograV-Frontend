@@ -96,6 +96,9 @@
 	  <MauiXaml Update="Vistas\OlvidoContrasenaCode.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Vistas\PerfilDriver.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Vistas\TodosProductos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -10,13 +10,8 @@ public partial class MainPageDriver : ContentPage
         BindingContext = new MainDriverViewModel();
     }
 
-    private void AceptarViajeClicked(object sender, EventArgs e)
+    private async void IrAPerfil_Clicked(object sender, EventArgs e)
     {
-
-    }
-
-    private void BuscarViajesClicked(object sender, EventArgs e)
-    {
-        
+        await Navigation.PushAsync(new PerfilDriver());
     }
 }
