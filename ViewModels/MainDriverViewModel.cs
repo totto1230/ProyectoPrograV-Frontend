@@ -1,7 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Login1.Models;
+using Login1.Models.Response;
+using Login1.Utilidades;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Text;
 
 namespace Login1.ViewModels
 {
@@ -36,8 +40,50 @@ namespace Login1.ViewModels
             LlenarProductosOrden();
             await Task.Delay(2000);
             // Llamar API para buscar orden...
+            //try
+            //{
+            //    HttpClient httpClient = new HttpClient();
+
+            //    MostrarSpinner = true;
+            //    var response = await httpClient.GetAsync(Url.url + "api/OrdenActiva/obtener");
+
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        var res = new ResponseOrdenActiva();
+            //        var responseLogin = await response.Content.ReadAsStringAsync();
+            //        res = JsonConvert.DeserializeObject<ResponseOrdenActiva>(responseLogin);
+
+            //        if (res.Result)
+            //        {
+            //            foreach(var producto in res.Productos)
+            //            {
+            //                Productos.Add(producto);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            // False desde el API
+            //            MostrarBuscarOrden = true;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        // Hubo un error en el API...
+            //        MostrarBuscarOrden = true;
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Hubo un error en el API...
+            //    throw;
+            //}
+            //finally
+            //{
+            //    MostrarSpinner = false;
+            //}
+            MostrarAceptarOrden = false;
             MostrarSpinner = false;
-            MostrarAceptarOrden = true;
         }
 
         [RelayCommand]

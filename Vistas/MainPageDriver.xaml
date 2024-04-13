@@ -16,12 +16,9 @@
         <!-- Estado mostrarOrdenAceptada -->
         <Image Source="destino.png" Grid.ColumnSpan="2" Grid.RowSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarOrdenAceptada}"/>
         <Button Grid.Row="2" Grid.Column="1" Text="Terminar viaje" BackgroundColor="LightGreen" IsVisible="{Binding MostrarOrdenAceptada}" Command="{Binding TerminarViajeCommand}"/>
-
-        <!-- Estado mostrarBuscarOrden -->
-        <Image Source="sanjosemap.png" Grid.ColumnSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarBuscarOrden}" />
-        <Button Grid.Row="1" Grid.ColumnSpan="2" Text="Buscar viajes" BackgroundColor="LightGreen" 
-                Command="{Binding ToggleMostrarSpinnerCommand}"
-                IsVisible="{Binding MostrarBuscarOrden}" Padding="5"/>
+        <!-- Estado mostrarOrdenAceptada -->
+        
+        <!-- Estado mostrarSpinner -->
         <ActivityIndicator 
             IsRunning="{Binding MostrarSpinner}"
             IsVisible="{Binding MostrarSpinner}"
@@ -31,6 +28,13 @@
             WidthRequest="80"
             HeightRequest="80"
         />
+        <!-- Estado mostrarSpinner -->
+
+        <!-- Estado mostrarBuscarOrden -->
+        <Image Source="sanjosemap.png" Grid.ColumnSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarBuscarOrden}" />
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Text="Buscar viajes" BackgroundColor="LightGreen" 
+                Command="{Binding ToggleMostrarSpinnerCommand}"
+                IsVisible="{Binding MostrarBuscarOrden}" Padding="5"/>
         <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20" IsVisible="{Binding MostrarBuscarOrden}">
             <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
