@@ -53,7 +53,8 @@ namespace Login1.ViewModels
                         Name = ProductosDisponibles.productos.Name[i],
                         Cantidad = ProductosDisponibles.productos.Cantidad[i],
                         Precio = ProductosDisponibles.productos.Precio[i],
-                        Categoria = categoria
+                        Categoria = categoria,
+                        UrlImage = Images.url[i]
                     });
                     i++;
                 }

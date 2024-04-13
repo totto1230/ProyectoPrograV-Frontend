@@ -9,5 +9,6 @@
 
         public string? Categoria { get; set; }
 
+        public string UrlImage {  get; set; }
     }
 }

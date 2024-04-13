@@ -35,9 +35,14 @@
                             <Grid Padding="0"
                                   ColumnDefinitions="125, *, *">
                                 <Image Aspect="AspectFill"
-                                   Source="boba.png"
                                    WidthRequest="125"
-                                   HeightRequest="125"/>
+                                   HeightRequest="125">
+                                    <Image.Source>
+                                        <UriImageSource Uri="{Binding UrlImage}"
+                                             CacheValidity="1:00:00:0">
+                                        </UriImageSource>
+                                    </Image.Source>
+                                </Image>
                                 <VerticalStackLayout Grid.Column="1"
                                                      Padding="10"
                                                      VerticalOptions="Center">
@@ -52,8 +57,7 @@
                                     </Label>
 
                                 </VerticalStackLayout>
-                                <Label Grid.Column="2" Text="Agregar al carrito" HorizontalOptions="Center"
-                                        VerticalOptions="Center"/>
+                                <Button x:Name="AgregarCarrito" Grid.Column="2" Text="Comprar" HorizontalOptions="Center" VerticalOptions="Center" Clicked="AgregarCarrito_Clicked" />
                             </Grid>
                         </Frame>
                     </Grid>

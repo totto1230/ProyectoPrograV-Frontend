@@ -14,4 +14,9 @@ public partial class Desechables : ContentPage
     {
         
     }
+
+    private void AgregarCarrito_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

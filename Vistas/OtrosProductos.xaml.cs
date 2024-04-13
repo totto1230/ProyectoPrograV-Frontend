@@ -17,4 +17,9 @@ public partial class OtrosProductos : ContentPage
     {
 
     }
+
+    private void AgregarCarrito_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
