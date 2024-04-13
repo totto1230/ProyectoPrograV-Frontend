@@ -42,6 +42,7 @@ public partial class Login : ContentPage
                 ResponseLogin res = new ResponseLogin();
                 var responseLogin = await response.Content.ReadAsStringAsync();
                 res = JsonConvert.DeserializeObject<ResponseLogin>(responseLogin);
+                res.Errors = new List<string>();
 
                 if (res.Result)
                 {
@@ -75,6 +76,20 @@ public partial class Login : ContentPage
                             else
                             {
                                 ProductosDisponibles.productos = res1.productos;
+
+                                int i = 0;
+                                Popular.id = new int?[4];
+                                while (i < 4)
+                                {
+                                    Array.Sort(ProductosDisponibles.productos.IdProducto);
+                                    Array.Sort(ProductosDisponibles.productos.Cantidad);
+                                    Array.Reverse(ProductosDisponibles.productos.IdProducto);
+                                    Array.Reverse(ProductosDisponibles.productos.Cantidad);
+                                    Popular.id[i] = ProductosDisponibles.productos.IdProducto[i];
+                                    i++;
+                                }
+                                //DisplayAlert("", Popular.id[0].ToString() + Popular.id[1].ToString() + Popular.id[2].ToString() + Popular.id[3].ToString(), "OK");
+
                             }
                             await Navigation.PushAsync(new MainPage());
                         }

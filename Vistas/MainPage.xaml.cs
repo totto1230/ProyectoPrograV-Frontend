@@ -3,6 +3,7 @@ using Login1.Models.Response;
 using Newtonsoft.Json;
 using System.Text;
 using Login1.Utilidades;
+using System.Diagnostics;
 
 namespace Login1.Vistas;
 
@@ -12,8 +13,14 @@ public partial class MainPage : ContentPage
 
     public MainPage()
 	{
-		InitializeComponent();
-	}
+        
+        InitializeComponent();
+        Image1.Source = ImageSource.FromUri(new Uri(Images.url[(int)Popular.id[0] - 1 ]));
+        Image2.Source = ImageSource.FromUri(new Uri(Images.url[(int)Popular.id[1] - 1]));
+        Image3.Source = ImageSource.FromUri(new Uri(Images.url[(int)Popular.id[2] - 1]));
+        Image4.Source = ImageSource.FromUri(new Uri(Images.url[(int)Popular.id[3] - 1]));
+
+    }
     
 
     private async void IrACarrito_Clicked(object sender, EventArgs e)
