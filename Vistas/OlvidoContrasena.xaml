@@ -19,7 +19,7 @@
                     <FontImageSource FontFamily="Awesome" Glyph="&#xf0e0;" Size="42" Color="Black" />
                 </Image.Source>
             </Image>
-            <Entry x:Name="EmailTxtReset" Grid.Column="1" Placeholder="Ingrese su Email" VerticalOptions="Center" TextColor="Black"/>
+            <Entry x:Name="EmailTxtReset" Grid.Column="1" Placeholder="Ingrese su Email" VerticalOptions="Center" TextColor="Black" Keyboard="Email"/>
         </Grid>
         <Grid Margin="0,30,0,0">
             <Grid.ColumnDefinitions>
@@ -32,7 +32,7 @@
                     <FontImageSource FontFamily="Awesome" Glyph="&#xf095;" Size="42" Color="Black" />
                 </Image.Source>
             </Image>
-            <Entry x:Name="NumberTxtReset" Grid.Column="1" Placeholder="Ingrese un Numero" VerticalOptions="Center" TextColor="Black"/>
+            <Entry x:Name="NumberTxtReset" Grid.Column="1" Placeholder="Ingrese un Numero" Keyboard="Numeric" VerticalOptions="Center" TextColor="Black"/>
         </Grid>
         
         <Grid Margin="0,30,0,0">
@@ -46,7 +46,7 @@
                     <FontImageSource FontFamily="Awesome" Glyph="&#xf084;" Size="42" Color="Black" />
                 </Image.Source>
             </Image>
-            <Entry x:Name="PasswordTxtReset" Grid.Column="1" Placeholder="Password" IsPassword="True" VerticalOptions="Center" TextColor="Black"/>
+            <Entry x:Name="PasswordTxtReset" Grid.Column="1" Placeholder="Nueva Contraseña" IsPassword="True" VerticalOptions="Center" TextColor="Black"/>
         </Grid>
         
         <!--<Grid Margin="0,30,0,0">
