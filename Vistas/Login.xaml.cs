@@ -51,9 +51,26 @@ public partial class Login : ContentPage
                     Session.typeU = res.typeU;
                     Session.email = res.email;
 
-                    //Pantalla Christopher
+                    
                     if (Session.typeU == 'D')
                     {
+                        var responseOrden = await httpClient.GetAsync(url + "api/OrdenActiva/obtener");
+                        if (responseOrden.IsSuccessStatusCode)
+                        {
+                            ResponseOrdenActiva resOrden = new ResponseOrdenActiva();
+                            var responseOrden1 = await responseOrden.Content.ReadAsStringAsync();
+                            resOrden = JsonConvert.DeserializeObject<ResponseOrdenActiva>(responseOrden1);
+
+                            if (!resOrden.Result)
+                            {
+                                DisplayAlert("SOMETHING WENT WRONG! ", res.Errors.First().ToString(), "OK");
+                            }
+                            else
+                            {
+                                OrdenesActivas.ordenes = resOrden.ordenActiva;
+                                //DisplayAlert(" ", OrdenesActivas.ordenes.NumeroCliente[0] + OrdenesActivas.ordenes.CostoViaje[0], " ");
+                            }
+                        }
                         //Driver Page
                         await Navigation.PushAsync(new MainPageDriver());
                         
@@ -68,7 +85,7 @@ public partial class Login : ContentPage
                             var responseProductos = await response1.Content.ReadAsStringAsync();
                             res1 = JsonConvert.DeserializeObject<ResponseProductos>(responseProductos);
 
-                            if (!res.Result)
+                            if (!res1.Result)
                             {
                                 DisplayAlert("SOMETHING WENT WRONG! ", res.Errors.First().ToString(), "OK");
 

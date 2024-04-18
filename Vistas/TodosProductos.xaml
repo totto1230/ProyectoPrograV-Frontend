@@ -6,6 +6,7 @@
              xmlns:model="clr-namespace:Login1.Models"
              x:DataType="viewmodel:TodosLosProductosViewModel"
              Title="TodosProductos">
+    
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5"
           RowDefinitions="*, Auto"

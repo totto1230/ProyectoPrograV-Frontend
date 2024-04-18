@@ -79,6 +79,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Vistas\MainPageDriver.xaml.cs">
+	    <DependentUpon>MainPageDriver.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Vistas\CrearNuevo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

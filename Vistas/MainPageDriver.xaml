@@ -1,102 +1,59 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Login1.Vistas.MainPageDriver"
              xmlns:viewmodel="clr-namespace:Login1.ViewModels"
              xmlns:model="clr-namespace:Login1.Models"
              x:DataType="viewmodel:MainDriverViewModel"
              Title="Driver">
 
-    <Grid RowDefinitions="*,70,70"
-          ColumnDefinitions="*,*"
-          RowSpacing="50"
-          ColumnSpacing="5"
-          Padding="15">
-        <!-- Estado mostrarOrdenAceptada -->
-        <Image Source="destino.png" Grid.ColumnSpan="2" Grid.RowSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarOrdenAceptada}"/>
-        <Button Grid.Row="2" Grid.Column="1" Text="Terminar viaje" BackgroundColor="LightGreen" IsVisible="{Binding MostrarOrdenAceptada}" Command="{Binding TerminarViajeCommand}"/>
-        <!-- Estado mostrarOrdenAceptada -->
-        
-        <!-- Estado mostrarSpinner -->
-        <ActivityIndicator 
-            IsRunning="{Binding MostrarSpinner}"
-            IsVisible="{Binding MostrarSpinner}"
-            Color="LightGreen" 
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="2"
-            WidthRequest="80"
-            HeightRequest="80"
-        />
-        <!-- Estado mostrarSpinner -->
-
-        <!-- Estado mostrarBuscarOrden -->
-        <Image Source="sanjosemap.png" Grid.ColumnSpan="2" Aspect="Fill" Margin="3" IsVisible="{Binding MostrarBuscarOrden}" />
-        <Button Grid.Row="1" Grid.ColumnSpan="2" Text="Buscar viajes" BackgroundColor="LightGreen" 
-                Command="{Binding ToggleMostrarSpinnerCommand}"
-                IsVisible="{Binding MostrarBuscarOrden}" Padding="5"/>
-        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20" IsVisible="{Binding MostrarBuscarOrden}">
-            <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
-                    <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" Clicked="IrAPerfil_Clicked"/>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
-        <!-- Estado mostrarBuscarOrden -->
-
-        <!-- Estado mostrarAceptarOrden -->
-        <CollectionView Grid.ColumnSpan="2" Grid.RowSpan="3"
-                ItemsSource="{Binding Productos}"
-                SelectionMode="None"
-                IsVisible="{Binding MostrarAceptarOrden}">
+    <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="*, Auto">
+        <CollectionView Grid.ColumnSpan="2" ItemsSource="{Binding Orden}" SelectionMode="None">
             <CollectionView.Footer>
-                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End" Spacing="20">
-                    <Button HorizontalOptions="Start" Text="Cancelar" BackgroundColor="Red" 
-                            TextColor="Black"
-                            Command="{Binding CancelarOrdenCommand}"/>
-                    <Button HorizontalOptions="End" Text="Aceptar" BackgroundColor="LightGreen" Command="{Binding AceptarOrdenCommand}"/>
-                </HorizontalStackLayout>
+                <StackLayout Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20">
+                    <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
+                            <!--<ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" />-->
+                            <ImageButton x:Name="LogOut" Source="salida.png" HeightRequest="40" WidthRequest="90" Clicked="LogOut_Clicked"  />
+                            <ImageButton x:Name="PerfilDriver" Source="usuario.png" HeightRequest="40" WidthRequest="90" Clicked="PerfilDriver_Clicked" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
             </CollectionView.Footer>
-            <CollectionView.Header>
-                <VerticalStackLayout Padding="0">
-                    <Label Text="Orden encontrada"
-                        FontSize="25"
-                    />
-                    <Label Text="{Binding CantidadProductosText}"
-                        FontSize="18"
-                    />
-                </VerticalStackLayout>
-            </CollectionView.Header>
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Product">
-                    <Grid Padding="10" >
-                        <Frame HeightRequest="125">
-                            <Grid
-                          ColumnDefinitions="125, *">
-                                <Image Aspect="AspectFill"
-                           Source="boba.png"
-                           WidthRequest="125"
-                           HeightRequest="125"/>
-                                <VerticalStackLayout Grid.Column="1"
-                                             Padding="10"
-                                             VerticalOptions="Center">
-                                    <Label Text="{Binding Name}" />
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Cantidad: "/>
-                                                <Span Text="{Binding Cantidad}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </Grid>
+                <DataTemplate x:DataType="model:OrdenA">
+                    <Frame Padding="10" Margin="5" BackgroundColor="#EFEFEF" CornerRadius="10">
+                        <StackLayout Spacing="20">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <Label Text="Orden Disponible #" FontSize="20" TextColor="#333333" VerticalOptions="Center" FontAttributes="Bold" />
+                                <Label Text="{Binding NumOrder}" FontSize="20" TextColor="#666666" VerticalOptions="Center" FontAttributes="Bold" />
+                            </StackLayout>
+                            <Label Text="Detalles de la orden:" FontSize="20" TextColor="#333333" VerticalOptions="Center" FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="Número Cliente:" FontSize="18" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding NumeroCliente}" FontSize="18" TextColor="#666666"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="Productos :" FontSize="18" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding NombreProductos}" FontSize="15" TextColor="#666666"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="Cantidad :" FontSize="18" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding Cantidad}" FontSize="15" TextColor="#666666"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="Precio de Pedido:" FontSize="18" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding TotalComprarOrden, StringFormat='{0:C}'}" FontSize="18" TextColor="#666666"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="Costo de Envío:" FontSize="18" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding CostoViaje, StringFormat='{0:C}'}" FontSize="18" TextColor="#666666"/>
+                            </StackLayout>
+                            <Button Text="Aceptar Orden" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#007AFF" TextColor="White" FontSize="18" CornerRadius="5" HeightRequest="40" WidthRequest="200"/>
+                        </StackLayout>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <!-- Estado mostrarAceptarOrden -->
     </Grid>
 </ContentPage>

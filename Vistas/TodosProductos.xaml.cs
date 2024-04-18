@@ -24,10 +24,10 @@ public partial class TodosProductos : ContentPage
 
     private void AgregarCarrito_Clicked(object sender, EventArgs e)
     {
-        TodosLosProductosViewModel viewModel = (TodosLosProductosViewModel)BindingContext;
+        //TodosLosProductosViewModel viewModel = (TodosLosProductosViewModel)BindingContext;
 
         // Access the Productos collection
-        ObservableCollection<Product> productos = viewModel.Productos;
+        //ObservableCollection<Product> productos = viewModel.Productos;
 
         //if (viewModel != null && viewModel.Productos != null && viewModel.Productos.Count > 0)
         //{
