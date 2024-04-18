@@ -10,13 +10,16 @@ public partial class Desechables : ContentPage
         BindingContext = new DesechablesViewModel();
     }
 
-    protected override async void OnAppearing()
+    private async void IrACarrito_Clicked(object sender, EventArgs e)
     {
-        
+        await Navigation.PushAsync(new Carrito());
     }
-
-    private void AgregarCarrito_Clicked(object sender, EventArgs e)
+    private async void IrAMainPage_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new MainPage());
+    }
+    private async void IrAPerfil_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Perfil());
     }
 }

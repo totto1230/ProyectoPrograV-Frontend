@@ -2,25 +2,49 @@
 using CommunityToolkit.Mvvm.Input;
 using Login1.Models;
 using Login1.Models.Entidades;
-using Login1.Models.Response;
 using Login1.Utilidades;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
-using System.Net.Mime;
-using System.Text;
-//using static Java.Util.Jar.Attributes;
 
 
 namespace Login1.ViewModels
 {
     public partial class TodosLosProductosViewModel : ObservableObject
     {
+        [ObservableProperty]
+        bool mostrarProductoAgregadoText;
         public ObservableCollection<Product> Productos { get; } = new ObservableCollection<Product>();
 
         public TodosLosProductosViewModel() 
         {
+            MostrarProductoAgregadoText = false;
             Task.Run(async () => await GetProductos());
         }
+
+        [RelayCommand]
+        public async void AgregarProductoCarrito(Product product)
+        {
+            MostrarProductoAgregadoText = true;
+            if (CarritoCompra.ProductosCarrito.Exists(x => x.IdProducto.Equals(product.IdProducto)))
+            {
+                CarritoCompra.ProductosCarrito.First(x => x.IdProducto.Equals(product.IdProducto)).CantidadEnCarrito += 1;
+            }
+            else
+            {
+                CarritoCompra.ProductosCarrito.Add(new ProductoCarrito
+                {
+                    Cantidad = product.Cantidad,
+                    CantidadEnCarrito = 1,
+                    Categoria = product.Categoria,
+                    IdProducto = product.IdProducto,
+                    Name = product.Name,
+                    Precio = product.Precio,
+                    UrlImage = product.UrlImage,
+                });
+            }
+            await Task.Delay(2000);
+            MostrarProductoAgregadoText = false;
+        }
+
 
         [RelayCommand]
         public async Task GetProductos()
@@ -70,7 +94,6 @@ namespace Login1.ViewModels
                 await Shell.Current.DisplayAlert("UNEXPECTED ERROR! ", ex.ToString(), "OK!");
                 throw;
             }
-
         }
     }
 }

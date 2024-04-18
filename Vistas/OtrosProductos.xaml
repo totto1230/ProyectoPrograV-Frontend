@@ -10,6 +10,9 @@
           RowDefinitions="*, Auto"
           >
 
+        <Frame IsVisible="{Binding MostrarProductoAgregadoText}" HeightRequest="75" WidthRequest="180" Grid.ColumnSpan="2" Grid.RowSpan="2"  VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White" Padding="10" HasShadow="True" CornerRadius="10" ZIndex="1000">
+            <Label Text="Producto agregado!" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black"/>
+        </Frame>
         <CollectionView Grid.ColumnSpan="2"
                         ItemsSource="{Binding Productos}"
                         SelectionMode="None">
@@ -17,12 +20,9 @@
                 <StackLayout Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20">
                     <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
-                            <!--<ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" Clicked="IrAMainPage_Clicked"/>
+                            <ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" Clicked="IrAMainPage_Clicked"/>
                             <ImageButton Source="carrito.png" HeightRequest="40" WidthRequest="90" Clicked="IrACarrito_Clicked"/>
-                            <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" Clicked="IrAPerfil_Clicked"/>-->
-                            <ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" />
-                            <ImageButton Source="carrito.png" HeightRequest="40" WidthRequest="90" />
-                            <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" />
+                            <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" Clicked="IrAPerfil_Clicked"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -56,7 +56,10 @@
                                     </Label>
 
                                 </VerticalStackLayout>
-                                <Button x:Name="AgregarCarrito" Grid.Column="2" Text="Comprar" HorizontalOptions="Center" VerticalOptions="Center" Clicked="AgregarCarrito_Clicked" />
+                                <Button x:Name="AgregarCarrito" Grid.Column="2" Text="Agregar al carrito" HorizontalOptions="Center" VerticalOptions="Center"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OtrosProductosViewModel}}, Path=AgregarProductoCarritoCommand}"
+                                    CommandParameter="{Binding .}" 
+                                    LineBreakMode="WordWrap" />
                             </Grid>
                         </Frame>
                     </Grid>

@@ -1,3 +1,5 @@
+using Login1.Models.Entidades;
+
 namespace Login1.Vistas;
 
 public partial class Carrito : ContentPage

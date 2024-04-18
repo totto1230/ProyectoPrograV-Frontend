@@ -9,17 +9,17 @@ public partial class OtrosProductos : ContentPage
 		InitializeComponent();
         BindingContext = new OtrosProductosViewModel();
     }
-    private async void IrAOtrosProductos_Clicked(object sender, EventArgs e)
+
+    private async void IrACarrito_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new OtrosProductos());
+        await Navigation.PushAsync(new Carrito());
     }
-    protected override async void OnAppearing()
+    private async void IrAMainPage_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new MainPage());
     }
-
-    private void AgregarCarrito_Clicked(object sender, EventArgs e)
+    private async void IrAPerfil_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Perfil());
     }
 }
