@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login1.Vistas.MainPageAdmin"
              Title="MainPageAdmin">
     <VerticalStackLayout>
-        <Label 
+        <!--<Label 
             Text="Hi Admin! This is in progress. - Epoch Mobile team "
-           />
+           />-->
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Button x:Name="Inventory" Text="Inventario" Margin="5" Clicked="Inventory_Clicked"/>
+            <Button x:Name="Status" Text="Status" Margin="5" Clicked="Status_Clicked" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

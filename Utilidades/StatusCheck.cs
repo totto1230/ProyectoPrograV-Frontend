@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Login1.Utilidades
 {
-    public class Url
+    public class StatusCheck
     {
-        public static string url = "https://proyectov-api20240406145416.azurewebsites.net/";
-
-        public static string python = "";
+        public static string? status {  get; set; }
     }
 }
