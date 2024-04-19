@@ -12,28 +12,28 @@ namespace Login1.ViewModels
 {
     public partial class MainDriverViewModel : ObservableObject
     {
-        //[ObservableProperty]
-        //bool mostrarSpinner;
-        //[ObservableProperty]
-        //bool mostrarBuscarOrden;
-        //[ObservableProperty]
-        //bool mostrarAceptarOrden;
-        //[ObservableProperty]
-        //bool mostrarOrdenAceptada;
-        //[ObservableProperty]
-        //string cantidadProductosText;
+        [ObservableProperty]
+        bool mostrarSpinner;
+        [ObservableProperty]
+        bool mostrarBuscarOrden;
+        [ObservableProperty]
+        bool mostrarAceptarOrden;
+        [ObservableProperty]
+        bool mostrarOrdenAceptada;
+        [ObservableProperty]
+        string cantidadProductosText;
         public ObservableCollection<OrdenA> Orden { get; } = new ObservableCollection<OrdenA>();
+        public ObservableCollection<OrdenA> OrdenActual { get; set; } = new ObservableCollection<OrdenA>();
 
         public MainDriverViewModel()
         {
-            //MostrarSpinner = false;
-            //MostrarBuscarOrden = true;
-            //MostrarAceptarOrden = false;
-            //MostrarOrdenAceptada = false;
+            MostrarSpinner = false;
+            MostrarBuscarOrden = true;
+            MostrarAceptarOrden = false;
+            MostrarOrdenAceptada = false;
             GetOrden();
         }
 
-        [RelayCommand]
         public void GetOrden()
         {
             try
@@ -85,141 +85,54 @@ namespace Login1.ViewModels
             return string.Join(", ", productos);
         }
 
-        //public string setCantidad(int cantidadXOrden)
-        //{
-        //    cantidadXOrden = Math.Min(cantidadXOrden, OrdenesActivas.ordenes.Cantidad.Length);
+        [RelayCommand]
+        public async Task BuscarOrden()
+        {
+            MostrarBuscarOrden = false;
+            MostrarSpinner = true;
+            await Task.Delay(2000);
+            MostrarSpinner = false;
+            var r = new Random();
+            var rInt = r.Next(0, Orden.Count + 1);
+            if (OrdenActual.Count == 0)
+            {
+                OrdenActual.Add(Orden.ElementAt(rInt));
+            }
+            else
+            {
+                OrdenActual.Clear();
+                OrdenActual.Add(Orden.ElementAt(rInt));
+            }
+            
+            MostrarAceptarOrden = true;
+        }
 
-        //    // Extract the first cantidadXOrden elements from the array
-        //    string[] cantidad = OrdenesActivas.ordenes.Cantidad.Take(cantidadXOrden).ToArray();
+        [RelayCommand]
+        public async Task AceptarOrden()
+        {
+            MostrarAceptarOrden = false;
+            MostrarSpinner = true;
+            await Task.Delay(2000);
+            MostrarSpinner = false;
+            MostrarOrdenAceptada = true;
+        }
 
-        //    // Join the elements into a single string separated by commas
-        //    return string.Join(", ", cantidad);
-        //}
+        [RelayCommand]
+        public async Task CancelarOrden()
+        {
+            MostrarAceptarOrden = false;
+            MostrarBuscarOrden = true;
+        }
 
-
-
-
-        //    [RelayCommand]
-        //public async Task ToggleMostrarSpinner()
-        //{
-        //    MostrarBuscarOrden = false;
-        //    MostrarSpinner = true;
-        //    LlenarProductosOrden();
-        //    await Task.Delay(2000);
-        //    // Llamar API para buscar orden...
-        //    //try
-        //    //{
-        //    //    HttpClient httpClient = new HttpClient();
-
-        //    //    MostrarSpinner = true;
-        //    //    var response = await httpClient.GetAsync(Url.url + "api/OrdenActiva/obtener");
-
-        //    //    if (response.IsSuccessStatusCode)
-        //    //    {
-        //    //        var res = new ResponseOrdenActiva();
-        //    //        var responseLogin = await response.Content.ReadAsStringAsync();
-        //    //        res = JsonConvert.DeserializeObject<ResponseOrdenActiva>(responseLogin);
-
-        //    //        if (res.Result)
-        //    //        {
-        //    //            foreach(var producto in res.Productos)
-        //    //            {
-        //    //                Productos.Add(producto);
-        //    //            }
-        //    //        }
-        //    //        else
-        //    //        {
-        //    //            // False desde el API
-        //    //            MostrarBuscarOrden = true;
-        //    //        }
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        // Hubo un error en el API...
-        //    //        MostrarBuscarOrden = true;
-        //    //    }
-
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //    // Hubo un error en el API...
-        //    //    throw;
-        //    //}
-        //    //finally
-        //    //{
-        //    //    MostrarSpinner = false;
-        //    //}
-        //    MostrarAceptarOrden = false;
-        //    MostrarSpinner = false;
-        //}
-
-        //[RelayCommand]
-        //public async Task AceptarOrden()
-        //{
-        //    MostrarAceptarOrden = false;
-        //    MostrarSpinner = true;
-        //    await Task.Delay(2000);
-        //    MostrarSpinner = false;
-        //    MostrarOrdenAceptada = true;
-        //}
-
-        //[RelayCommand]
-        //public async Task CancelarOrden()
-        //{
-        //    Productos.Clear();
-        //    MostrarAceptarOrden = false;
-        //    MostrarBuscarOrden = true;
-        //}
-
-        //[RelayCommand]
-        //public async Task TerminarViaje()
-        //{
-        //    Productos.Clear();
-        //    MostrarSpinner = true;
-        //    MostrarOrdenAceptada = false;
-        //    await Task.Delay(2000);
-        //    MostrarSpinner = false;
-        //    MostrarBuscarOrden = true;
-        //}
-
-        //private void LlenarProductosOrden()
-        //{
-        //    Productos.Clear();
-        //    Productos.Add(new Product
-        //    {
-        //        Name = "Rose Milk Tea",
-        //        Cantidad = 2,
-        //    });
-        //    Productos.Add(new Product
-        //    {
-        //        Name = "Lavender Milk",
-        //        Cantidad = 1,
-        //    });
-        //    Productos.Add(new Product
-        //    {
-        //        Name = "Almond Milk",
-        //        Cantidad = 2,
-        //    });
-        //    Productos.Add(new Product
-        //    {
-        //        Name = "Honey Lemonade",
-        //        Cantidad = 3,
-        //    });
-        //    Productos.Add(new Product
-        //    {
-        //        Name = "Jasmine Tea",
-        //        Cantidad = 1,
-        //    });
-
-        //    int? cantidadProductos = 0;
-
-        //    foreach(var product in Productos)
-        //    {
-        //        cantidadProductos += product.Cantidad;
-        //    }
-
-        //    CantidadProductosText = "Cantidad de productos: " + cantidadProductos;
-        //}
+        [RelayCommand]
+        public async Task TerminarViaje()
+        {
+            MostrarSpinner = true;
+            MostrarOrdenAceptada = false;
+            await Task.Delay(2000);
+            MostrarSpinner = false;
+            MostrarBuscarOrden = true;
+        }
     }
 }
 
