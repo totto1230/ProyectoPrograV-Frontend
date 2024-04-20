@@ -13,6 +13,8 @@ namespace Login1.Utilidades
         public static char? typeU { get; set; }
 
         public static string email { get; set; }
+
+        public static string number { get; set; }
         //public void Logout()
         //{
         //    name = null;
