@@ -2,14 +2,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login1.Vistas.MainPageAdmin"
              Title="MainPageAdmin">
-    <VerticalStackLayout>
-        <!--<Label 
-            Text="Hi Admin! This is in progress. - Epoch Mobile team "
-           />-->
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-            <Button x:Name="Inventory" Text="Inventario" Margin="5" Clicked="Inventory_Clicked"/>
-            <Button x:Name="Status" Text="Status" Margin="5" Clicked="Status_Clicked" />
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+            <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="Admin Menu Options" FontSize="Title" HorizontalOptions="Center" />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                    <Button x:Name="Inventory" Text="Inventario" Clicked="Inventory_Clicked" Margin="5"/>
+                    <Button x:Name="Status" Text="Status" Clicked="Status_Clicked" Margin="5"/>
+                    <Button x:Name="RequestFeature" Text="Request a Feature" Clicked="RequestFeature_Clicked" Margin="5"/>
+                </StackLayout>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Button x:Name="LogOut" Text="LogOut" Clicked="LogOut_Clicked" HorizontalOptions="Start" VerticalOptions="End" Margin="10" />
+    </Grid>
 </ContentPage>

@@ -113,6 +113,44 @@ public partial class Login : ContentPage
                     }
                     else if (Session.typeU == 'A')
                     {
+                        using (HttpClient client = new HttpClient())
+                        {
+                            try
+                            {
+                                HttpResponseMessage responseAdmin = await client.GetAsync(Url.python);
+
+                                if (responseAdmin.IsSuccessStatusCode)
+                                {
+                                    // Read the response content as a string
+                                    string responseBody = await responseAdmin.Content.ReadAsStringAsync();
+
+                                    if (responseBody == null)
+                                    {
+                                        StatusCheck.status = "Health endpoint down!!";
+                                    }
+                                    else if (responseBody == "Haven't tried yet!")
+                                    {
+                                        StatusCheck.status = "Health endpoint down!!";
+                                    }
+                                    else if (responseBody == "All the endpoints are working fine!")
+                                    {
+                                        StatusCheck.status = responseBody;
+                                    }
+                                    else
+                                    {
+                                        StatusCheck.status = responseBody;
+                                    }
+                                }
+                                else
+                                {
+                                    StatusCheck.status = "Health endpoint down!!";
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error: " + ex.Message);
+                            }
+                        }
                         await Navigation.PushAsync(new MainPageAdmin());
                     }
                     else
