@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Maui.Controls.Xaml;
 
 
+
 namespace Login1.Vistas;
 
 public partial class Login : ContentPage
@@ -13,8 +14,8 @@ public partial class Login : ContentPage
     string url = Url.url;
 
     public Login()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
     }
 
     private async void CreateAccount_Clicked(object sender, EventArgs e)
@@ -35,7 +36,7 @@ public partial class Login : ContentPage
 
             HttpClient httpClient = new HttpClient();
 
-            var response = await httpClient.PostAsync(url+"api/Users/validate", jsonContent);
+            var response = await httpClient.PostAsync(url + "api/Users/validate", jsonContent);
 
             if (response.IsSuccessStatusCode)
             {
@@ -46,12 +47,12 @@ public partial class Login : ContentPage
 
                 if (res.Result)
                 {
-                    DisplayAlert("WELCOME! " , res.Message.ToString(), "GO!");
+                    DisplayAlert("WELCOME! ", res.Message.ToString(), "GO!");
                     Session.name = res.name;
                     Session.typeU = res.typeU;
                     Session.email = res.email;
 
-                    
+
                     if (Session.typeU == 'D')
                     {
                         var responseOrden = await httpClient.GetAsync(url + "api/OrdenActiva/obtener");
@@ -73,7 +74,7 @@ public partial class Login : ContentPage
                         }
                         //Driver Page
                         await Navigation.PushAsync(new MainPageDriver());
-                        
+
                     }
                     else if (Session.typeU == 'U')
                     {
@@ -113,43 +114,16 @@ public partial class Login : ContentPage
                     }
                     else if (Session.typeU == 'A')
                     {
-                        using (HttpClient client = new HttpClient())
+                        HttpResponseMessage responseAdmin = await httpClient.GetAsync(Url.python + "healthz");
+
+                        if (responseAdmin.IsSuccessStatusCode)
                         {
-                            try
-                            {
-                                HttpResponseMessage responseAdmin = await client.GetAsync(Url.python);
-
-                                if (responseAdmin.IsSuccessStatusCode)
-                                {
-                                    // Read the response content as a string
-                                    string responseBody = await responseAdmin.Content.ReadAsStringAsync();
-
-                                    if (responseBody == null)
-                                    {
-                                        StatusCheck.status = "Health endpoint down!!";
-                                    }
-                                    else if (responseBody == "Haven't tried yet!")
-                                    {
-                                        StatusCheck.status = "Health endpoint down!!";
-                                    }
-                                    else if (responseBody == "All the endpoints are working fine!")
-                                    {
-                                        StatusCheck.status = responseBody;
-                                    }
-                                    else
-                                    {
-                                        StatusCheck.status = responseBody;
-                                    }
-                                }
-                                else
-                                {
-                                    StatusCheck.status = "Health endpoint down!!";
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("Error: " + ex.Message);
-                            }
+                            string responseBody = await responseAdmin.Content.ReadAsStringAsync();
+                            DisplayAlert(" " , responseBody, "OK");
+                        }
+                        else
+                        {
+                            StatusCheck.status = "Health endpoint down!!";
                         }
                         await Navigation.PushAsync(new MainPageAdmin());
                     }
@@ -159,7 +133,8 @@ public partial class Login : ContentPage
                     }
 
                 }
-                else {
+                else
+                {
 
                     DisplayAlert("SOMETHING WENT WRONG! ", res.Errors.First().ToString(), "OK");
                 }
@@ -183,7 +158,4 @@ public partial class Login : ContentPage
         await Navigation.PushAsync(new OlvidoContrasena());
     }
 }
-
-
-
 

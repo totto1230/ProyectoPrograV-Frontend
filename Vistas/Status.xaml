@@ -2,9 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login1.Vistas.Status"
              Title="Status">
-    <VerticalStackLayout>
 
-        <BoxView x:Name="circle" Color="Red" WidthRequest="100" HeightRequest="100" CornerRadius="50" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label x:Name="statuss" Text="asd " HorizontalOptions="Center" VerticalOptions="Center"></Label>
-    </VerticalStackLayout>
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
+        <BoxView x:Name="circle" Color="Red" WidthRequest="200" HeightRequest="200" CornerRadius="100" />
+        <Label x:Name="statuss" Text="Status" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+    </StackLayout>
+
 </ContentPage>

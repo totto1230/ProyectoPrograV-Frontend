@@ -7,23 +7,26 @@ public partial class Status : ContentPage
 {
 	public Status()
 	{
-		InitializeComponent();
-		
+        InitializeComponent();
+        updateStatus();
+    }
+
+    public void updateStatus()
+    {
         if (StatusCheck.status == "Health endpoint down!!")
-		{
-			circle.Color = Color.FromRgb(255,0,0);
-			statuss.Text = StatusCheck.status;
-        }
-		else if (StatusCheck.status == "All the endpoints are working fine! ")
-		{
-            circle.Color = Color.FromRgb(0,255,0);
+        {
+            circle.Color = Color.FromRgb(255, 0, 0);
             statuss.Text = StatusCheck.status;
         }
-		else
-		{
+        else if (StatusCheck.status == "All the endpoints are working fine! ")
+        {
+            circle.Color = Color.FromRgb(0, 255, 0);
+            statuss.Text = StatusCheck.status;
+        }
+        else
+        {
             circle.Color = Color.FromRgb(255, 255, 0);
             statuss.Text = StatusCheck.status;
         }
-
     }
 }
