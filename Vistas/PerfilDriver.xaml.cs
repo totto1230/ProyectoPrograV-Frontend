@@ -18,7 +18,9 @@ public partial class PerfilDriver : ContentPage
 
     private async void CerrarSesion_Clicked(object sender, EventArgs e)
     {
-
+        Session.name = null;
+        Session.typeU = null;
+        Session.email = null;
         await Navigation.PushAsync(new Login());
     }
 }

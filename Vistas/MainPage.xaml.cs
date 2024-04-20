@@ -19,6 +19,7 @@ public partial class MainPage : ContentPage
         Image2.Source = ImageSource.FromUri(new Uri(Images.url[(int)Popular.id[1] - 1]));
         Image3.Source = ImageSource.FromUri(new Uri(Images.url[(int)Popular.id[2] - 1]));
         Image4.Source = ImageSource.FromUri(new Uri(Images.url[(int)Popular.id[3] - 1]));
+        Name.Text = Session.name;
 
     }
     

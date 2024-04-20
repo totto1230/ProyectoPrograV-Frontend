@@ -27,9 +27,13 @@
 
             <!-- Bienvenida -->
             <StackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start" Spacing="10">
-                <Label Text="Bienvenido!!" FontSize="Title" FontAttributes="Bold"/>
-                <Label Text="Aprovecha nuestra variedad en productos" FontSize="Subtitle"/>
-                <Image Source="banner1.png" HeightRequest="200" Aspect="AspectFill"/>
+                <Image Source="epo.png" HeightRequest="200" Aspect="AspectFit"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Bienvenido/a " FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label x:Name="Name" Text="" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    <Label Text=" !" FontSize="Title" FontAttributes="Bold"/>
+                </StackLayout>
+                <!--<Label Text="Aprovecha nuestra variedad en productos" FontSize="Subtitle"/>-->
             </StackLayout>
 
 
