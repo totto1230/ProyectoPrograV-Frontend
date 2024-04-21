@@ -51,7 +51,7 @@ public partial class Login : ContentPage
                     Session.name = res.name;
                     Session.typeU = res.typeU;
                     Session.email = res.email;
-
+                    Session.number = res.numberr;
 
                     if (Session.typeU == 'D')
                     {
@@ -64,7 +64,7 @@ public partial class Login : ContentPage
 
                             if (!resOrden.Result)
                             {
-                                DisplayAlert("SOMETHING WENT WRONG! ", res.Errors.First().ToString(), "OK");
+                                DisplayAlert("SOMETHING WENT WRONG! ", resOrden.Errors.First().ToString(), "OK");
                             }
                             else
                             {

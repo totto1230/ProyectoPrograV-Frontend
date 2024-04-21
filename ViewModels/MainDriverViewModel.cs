@@ -8,6 +8,7 @@ using Login1.Utilidades;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Text;
 
 namespace Login1.ViewModels
@@ -27,7 +28,8 @@ namespace Login1.ViewModels
         public ObservableCollection<OrdenA> Orden { get; } = new ObservableCollection<OrdenA>();
         public ObservableCollection<OrdenA> OrdenActual { get; set; } = new ObservableCollection<OrdenA>();
 
-        int idOrdenn = 0;
+        int[] idOrdenn = new int[OrdenesActivas.ordenes.NumeroCliente.Length];
+        int position = 0;
 
         string url = Url.url;
         public MainDriverViewModel()
@@ -39,12 +41,12 @@ namespace Login1.ViewModels
             GetOrden();
         }
 
-        public void GetOrden()
+        public async void GetOrden()
         {
             try
             {
                 int cantidadOrdenes = (OrdenesActivas.ordenes.CantidadProductosxOrden.Length), i = 0;
-    
+                
 
                 var listaOrdenes = new List<OrdenA>();
                 while (i < cantidadOrdenes)
@@ -60,13 +62,14 @@ namespace Login1.ViewModels
                         CostoViaje = OrdenesActivas.ordenes.CostoViaje[i],
                         NumOrder= i + 1
                     });
-                    idOrdenn = i + 1;
+                    idOrdenn[i] = i + 1;
                     i++;
                 }
                 foreach (var x in listaOrdenes)
                 {
                     Orden.Add(x);
                 }
+                
             }
             catch (Exception ex)
             {
@@ -100,6 +103,7 @@ namespace Login1.ViewModels
             MostrarSpinner = false;
             var r = new Random();
             var rInt = r.Next(0, Orden.Count + 1);
+     
             if (OrdenActual.Count == 0)
             {
                 OrdenActual.Add(Orden.ElementAt(rInt));
@@ -109,7 +113,7 @@ namespace Login1.ViewModels
                 OrdenActual.Clear();
                 OrdenActual.Add(Orden.ElementAt(rInt));
             }
-            
+            position = rInt;
             MostrarAceptarOrden = true;
         }
 
@@ -142,9 +146,10 @@ namespace Login1.ViewModels
             try
             {
                 RequestOrdenActivaCompletar req = new RequestOrdenActivaCompletar();
+                req.completar = new OrdenActivaCompletar();
                 req.completar.completada = true;
                 req.completar.numDriver = Session.number;
-                req.completar.idOrden = idOrdenn;
+                req.completar.idOrden = idOrdenn[position];
                 req.completar.fecha = DateTime.Now;
 
                 var jsonContent = new StringContent(JsonConvert.SerializeObject(req), Encoding.UTF8, "application/json");
@@ -158,7 +163,7 @@ namespace Login1.ViewModels
                     ResponseOrdenActivaCompletar res = new ResponseOrdenActivaCompletar();
                     var responseOrdenCompletar = await response.Content.ReadAsStringAsync();
                     res = JsonConvert.DeserializeObject<ResponseOrdenActivaCompletar>(responseOrdenCompletar);
-                     res.Errors = new List<string>();
+                    res.Errors = new List<string>();
 
                     if (res.Result)
                     {
@@ -167,6 +172,34 @@ namespace Login1.ViewModels
                         {
                             await Application.Current.MainPage.DisplayAlert(" ", res.Message, "OK!");
                         });
+                        //OrdenActual.RemoveAt();
+                        //Actualizar Ordenes disponibles con API
+                        try
+                        {
+                            var responseOrden = await httpClient.GetAsync(url + "api/OrdenActiva/obtener");
+                            if (responseOrden.IsSuccessStatusCode)
+                            {
+                                ResponseOrdenActiva resOrden = new ResponseOrdenActiva();
+                                var responseOrden1 = await responseOrden.Content.ReadAsStringAsync();
+                                resOrden = JsonConvert.DeserializeObject<ResponseOrdenActiva>(responseOrden1);
+
+                                if (!resOrden.Result)
+                                {
+                                    //DisplayAlert("SOMETHING WENT WRONG! ", resOrden.Errors.First().ToString(), "OK");
+                                }
+                                else
+                                {
+                                    OrdenesActivas.ordenes = resOrden.ordenActiva;
+                                    //DisplayAlert(" ", OrdenesActivas.ordenes.NumeroCliente[0] + OrdenesActivas.ordenes.CostoViaje[0], " ");
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+
                     }
                     else
                     {
