@@ -3,10 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login1.Vistas.Inventario"
              Title="Inventario">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <StackLayout Padding="20" Spacing="10">
+
+        <Picker x:Name="Name"
+                Title="Producto"
+                SelectedIndexChanged="Name_SelectedIndexChanged" />
+
+        <Picker x:Name="Categoria"
+                Title="Categoría"
+                SelectedIndexChanged="Categoria_SelectedIndexChanged"/>
+
+        <Entry x:Name="Cantidad"
+               Keyboard="Numeric"
+               Placeholder="Cantidad (Ejemplo: 0 a 1000)" />
+
+        <Entry x:Name="Precio"
+               Keyboard="Numeric"
+               Placeholder="Precio (Ejemplo: $1000)" />
+
+        <Button x:Name="Actualizar_Producto"
+                Clicked="Actualizar_Producto_Clicked"
+                Text="Actualizar"
+                HorizontalOptions="Center" />
+
+    </StackLayout>
+
 </ContentPage>

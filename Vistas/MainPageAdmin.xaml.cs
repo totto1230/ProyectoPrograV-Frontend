@@ -1,11 +1,16 @@
+using Login1.Models.Request;
+using Login1.Models.Response;
 using Login1.Utilidades;
+using Newtonsoft.Json;
+using System;
 
 namespace Login1.Vistas;
 
 public partial class MainPageAdmin : ContentPage
 {
- 
-	public MainPageAdmin()
+    string url = Url.url;
+
+    public MainPageAdmin()
 	{
 		InitializeComponent();
 	}
@@ -17,6 +22,36 @@ public partial class MainPageAdmin : ContentPage
 
     private async void Inventory_Clicked(object sender, EventArgs e)
     {
+        try
+        {
+            RequestProductosAdmin req = new RequestProductosAdmin();
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(url + "api/Admin/ProductosObtener");
+
+            if (response.IsSuccessStatusCode)
+            {
+                ResponseProductosAdmin res = new ResponseProductosAdmin();
+                var responseProductosAdminn = await response.Content.ReadAsStringAsync();
+                res = JsonConvert.DeserializeObject<ResponseProductosAdmin>(responseProductosAdminn);
+
+                if (!res.Result)
+                {
+                    DisplayAlert("SOMETHING WENT WRONG! ", res.Errors.First().ToString(), "OK");
+
+                }
+                else
+                {
+                    ProductosDisponiblesAdmin.productos = res.productos;
+                }
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+
         await Navigation.PushAsync(new Inventario());
     }
 
