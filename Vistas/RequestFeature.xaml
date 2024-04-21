@@ -12,7 +12,7 @@
         <Editor x:Name="DescriptionEditor" Placeholder="Enter description" HeightRequest="200" />
 
         <!-- Submit Button -->
-        <Button Text="Submit" Clicked="Submit_Clicked" HorizontalOptions="Center" Margin="10" />
+        <Button Text="Submit" Clicked="Button_Clicked"  HorizontalOptions="Center" Margin="10"/>
     </StackLayout>
 
 </ContentPage>

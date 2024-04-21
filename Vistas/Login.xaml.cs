@@ -114,17 +114,17 @@ public partial class Login : ContentPage
                     }
                     else if (Session.typeU == 'A')
                     {
-                        HttpResponseMessage responseAdmin = await httpClient.GetAsync(Url.python + "healthz");
+                        //HttpResponseMessage responseAdmin = await httpClient.GetAsync(Url.python + "healthz");
 
-                        if (responseAdmin.IsSuccessStatusCode)
-                        {
-                            string responseBody = await responseAdmin.Content.ReadAsStringAsync();
-                            DisplayAlert(" " , responseBody, "OK");
-                        }
-                        else
-                        {
-                            StatusCheck.status = "Health endpoint down!!";
-                        }
+                        //if (responseAdmin.IsSuccessStatusCode)
+                        //{
+                        //    string responseBody = await responseAdmin.Content.ReadAsStringAsync();
+                        //    DisplayAlert(" " , responseBody, "OK");
+                        //}
+                        //else
+                        //{
+                        //    StatusCheck.status = "Health endpoint down!!";
+                        //}
                         await Navigation.PushAsync(new MainPageAdmin());
                     }
                     else
