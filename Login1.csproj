@@ -106,6 +106,9 @@
 	  <MauiXaml Update="Vistas\OlvidoContrasenaCode.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Vistas\PaginaPago.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Vistas\RequestFeature.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

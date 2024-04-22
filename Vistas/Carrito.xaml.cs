@@ -24,4 +24,10 @@ public partial class Carrito : ContentPage
         await Navigation.PushAsync(new Carrito());
     }
 
+    private async void IrAPaginaPago_Clicked(object sender, EventArgs e)
+    {
+        // Navegar a la página PaginaPago
+        await Navigation.PushAsync(new PaginaPago());
+    }
+
 }
