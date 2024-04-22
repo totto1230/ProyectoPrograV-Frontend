@@ -83,4 +83,24 @@ public partial class MainPage : ContentPage
             throw;
         }
     }
+
+    private async void Image1_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new TodosProductos());
+    }
+
+    private async void Image2_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new TodosProductos());
+    }
+
+    private async void Image3_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new TodosProductos());
+    }
+
+    private async void Image4_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new TodosProductos());
+    }
 }

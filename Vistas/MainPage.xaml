@@ -67,7 +67,7 @@
                         <StackLayout Grid.Row="0" Grid.Column="0" Spacing="5">
                             <ImageButton  x:Name="Image1" Aspect="AspectFill"
                                    WidthRequest="125"
-                                   HeightRequest="125">
+                                   HeightRequest="125" Clicked="Image1_Clicked" >
                                 <ImageButton.Source >
                                     <UriImageSource  Uri="https://storage.googleapis.com/proyectoprogra/1.jpg"
                                              CacheValidity="1:00:00:0">
@@ -80,7 +80,7 @@
                         <StackLayout Grid.Row="0" Grid.Column="1" Spacing="5">
                             <ImageButton x:Name="Image2" Aspect="AspectFill"
                                    WidthRequest="125"
-                                   HeightRequest="125">
+                                   HeightRequest="125" Clicked="Image2_Clicked">
                                 <ImageButton.Source>
                                     <UriImageSource  Uri="https://storage.googleapis.com/proyectoprogra/12.jpg"
                                              CacheValidity="1:00:00:0">
@@ -93,7 +93,7 @@
                         <StackLayout Grid.Row="1" Grid.Column="0" Spacing="5">
                             <ImageButton x:Name="Image3" Aspect="AspectFill"
                                    WidthRequest="125"
-                                   HeightRequest="125">
+                                   HeightRequest="125" Clicked="Image3_Clicked">
                                 <ImageButton.Source>
                                     <UriImageSource Uri="https://storage.googleapis.com/proyectoprogra/11.jpg"
                                              CacheValidity="1:00:00:0">
@@ -106,7 +106,7 @@
                         <StackLayout Grid.Row="1" Grid.Column="1" Spacing="5">
                             <ImageButton x:Name="Image4" Aspect="AspectFill"
                                    WidthRequest="125"
-                                   HeightRequest="125">
+                                   HeightRequest="125" Clicked="Image4_Clicked">
                                 <ImageButton.Source>
                                     <UriImageSource  Uri="https://storage.googleapis.com/proyectoprogra/14.jpg"
                                              CacheValidity="1:00:00:0">
