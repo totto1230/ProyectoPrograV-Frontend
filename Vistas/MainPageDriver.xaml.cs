@@ -15,10 +15,6 @@ public partial class MainPageDriver : ContentPage
 		InitializeComponent();
         BindingContext = new MainDriverViewModel();
     }
-    protected override async void OnAppearing()
-    {
-
-    }
 
     private async void PerfilDriver_Clicked(object sender, EventArgs e)
     {
