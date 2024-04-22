@@ -5,8 +5,8 @@ namespace Login1.Vistas;
 
 public partial class Status : ContentPage
 {
-	public Status()
-	{
+    public Status()
+    {
         InitializeComponent();
         updateStatus();
     }
@@ -18,7 +18,7 @@ public partial class Status : ContentPage
             circle.Color = Color.FromRgb(255, 0, 0);
             statuss.Text = StatusCheck.status;
         }
-        else if (StatusCheck.status == "All the endpoints are working fine! ")
+        else if (StatusCheck.status == "All the endpoints are working fine!")
         {
             circle.Color = Color.FromRgb(0, 255, 0);
             statuss.Text = StatusCheck.status;

@@ -114,17 +114,39 @@ public partial class Login : ContentPage
                     }
                     else if (Session.typeU == 'A')
                     {
-                        //HttpResponseMessage responseAdmin = await httpClient.GetAsync(Url.python + "healthz");
+                        //try
+                        //{
+                        //    HttpResponseMessage responseAdmin = await httpClient.GetAsync(Url.python + "healthz");
 
-                        //if (responseAdmin.IsSuccessStatusCode)
-                        //{
-                        //    string responseBody = await responseAdmin.Content.ReadAsStringAsync();
-                        //    DisplayAlert(" " , responseBody, "OK");
+                        //    if (responseAdmin.IsSuccessStatusCode)
+                        //    {
+                        //        string responseBody = await responseAdmin.Content.ReadAsStringAsync();
+                        //        StatusCheck.status = responseBody;
+                        //    }
+                        //    else
+                        //    {
+                        //        StatusCheck.status = "Health endpoint down!!";
+                        //    }
                         //}
-                        //else
+                        //catch (HttpRequestException ex)
                         //{
-                        //    StatusCheck.status = "Health endpoint down!!";
+                        //    // Handle HTTP request related exceptions
+                        //    Console.WriteLine($"HTTP request failed: {ex.Message}");
+                        //    StatusCheck.status = "Error: HTTP request failed";
                         //}
+                        //catch (TaskCanceledException ex)
+                        //{
+                        //    // Handle timeout or cancellation exceptions
+                        //    Console.WriteLine($"Request timed out or cancelled: {ex.Message}");
+                        //    StatusCheck.status = "Error: Request timed out or cancelled";
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    // Handle other exceptions
+                        //    Console.WriteLine($"An error occurred: {ex.Message}");
+                        //    StatusCheck.status = "Error: An unexpected error occurred";
+                        //}
+
                         await Navigation.PushAsync(new MainPageAdmin());
                     }
                     else

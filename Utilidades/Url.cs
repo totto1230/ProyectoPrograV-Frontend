@@ -10,6 +10,6 @@ namespace Login1.Utilidades
     {
         public static string url = "https://proyectov-api20240406145416.azurewebsites.net/";
 
-        public static string python = "http://172.171.163.124/";
+        public static string python = "http://172.171.51.243/";
     }
 }

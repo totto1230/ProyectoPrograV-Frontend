@@ -1,11 +1,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Login1.Vistas"
+             xmlns:util="clr-namespace:Login1.Utilidades"
              x:Class="Login1.Vistas.Status"
              Title="Status">
 
+    <ContentPage.Resources>
+        <util:StatusCheck x:Key="StatusCheck" />
+    </ContentPage.Resources>
+
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
-        <BoxView x:Name="circle" Color="Red" WidthRequest="200" HeightRequest="200" CornerRadius="100" />
-        <Label x:Name="statuss" Text="Status" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+        <!-- Animated color-changing circle -->
+        <BoxView x:Name="circle"
+                 WidthRequest="200"
+                 HeightRequest="200"
+                 CornerRadius="100"
+                 Color="{Binding Source={StaticResource StatusCheck}, Path=StatusColor}" />
+
+        <!-- Display the status message -->
+        <Label x:Name="statuss"
+               Text="{Binding Source={StaticResource StatusCheck}, Path=StatusMessage}"
+               FontSize="Large"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               HorizontalOptions="CenterAndExpand" />
+
     </StackLayout>
 
 </ContentPage>
