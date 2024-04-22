@@ -27,7 +27,7 @@ namespace Login1.Vistas
             viewModel.AgregarProductoCarritoCommand.Execute(product);
         }
 
-        // Otros métodos para navegar a otras páginas (si los tienes)
+        // Otros métodos para navegar a otras páginas 
         private async void IrACarrito_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Carrito());

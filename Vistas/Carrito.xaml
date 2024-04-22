@@ -56,7 +56,7 @@
                     <StackLayout Padding="10">
                         <Label Text="{Binding Name}" />
                         <Label Text="{Binding Precio}" />
-                        <!-- Aquí puedes agregar más información del producto, como la imagen, la cantidad, etc. -->
+                        
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
