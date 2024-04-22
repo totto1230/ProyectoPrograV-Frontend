@@ -1,5 +1,5 @@
 ﻿
-namespace Login1.Models.Entidades
+namespace Login1.Models
 {
     public class ProductoCarrito : Product
     {

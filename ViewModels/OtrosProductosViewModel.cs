@@ -79,7 +79,7 @@ namespace Login1.ViewModels
                     UrlImage = product.UrlImage,
                 });
             }
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             MostrarProductoAgregadoText = false;
         }
     }

@@ -13,20 +13,6 @@ namespace Login1.Vistas
             BindingContext = new DesechablesViewModel();
         }
 
-        // Método que se ejecuta cuando se hace clic en el botón "Agregar al carrito"
-        private void AgregarAlCarrito_Clicked(object sender, EventArgs e)
-        {
-            // Obtener el producto asociado al botón
-            var button = (Button)sender;
-            var product = (Product)button.CommandParameter;
-
-            // Obtener el ViewModel de la página
-            var viewModel = (DesechablesViewModel)BindingContext;
-
-            // Ejecutar el comando para agregar el producto al carrito
-            viewModel.AgregarProductoCarritoCommand.Execute(product);
-        }
-
         // Otros métodos para navegar a otras páginas 
         private async void IrACarrito_Clicked(object sender, EventArgs e)
         {

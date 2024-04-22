@@ -61,8 +61,7 @@
                                 <Button x:Name="AgregarCarrito" Grid.Column="2" Text="Agregar al carrito" HorizontalOptions="Center" VerticalOptions="Center"
         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DesechablesViewModel}}, Path=AgregarProductoCarritoCommand}"
         CommandParameter="{Binding .}" 
-        LineBreakMode="WordWrap"
-        Clicked="AgregarAlCarrito_Clicked" />
+        LineBreakMode="WordWrap" />
 
                                 <!-- Pasar como parámetro al Command el objeto entero -->
                             </Grid>

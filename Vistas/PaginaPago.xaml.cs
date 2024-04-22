@@ -1,3 +1,5 @@
+using Login1.Models.Entidades;
+
 namespace Login1.Vistas;
 
 public partial class PaginaPago : ContentPage
@@ -32,6 +34,8 @@ public partial class PaginaPago : ContentPage
 
         // Mostrar un mensaje de pago completado con éxito
         await DisplayAlert("Pago completado", "El pago se ha completado con éxito", "OK");
+
+        CarritoCompra.ProductosCarrito.Clear();
 
         // Navegar de regreso a la página de inicio
         await Navigation.PushAsync(new MainPage());

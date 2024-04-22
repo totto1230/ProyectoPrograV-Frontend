@@ -1,26 +1,33 @@
-﻿using System;
-using System.Windows.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Login1.Models;
 using Login1.Models.Entidades;
+using System.Collections.ObjectModel;
 
 namespace Login1.ViewModels
 {
-    public class CarritoViewModel
+    public partial class CarritoViewModel : ObservableObject
     {
-        public ICommand MostrarCarritoCommand { get; }
+        public ObservableCollection<ProductoCarrito> ProductosCarrito { get; } = new ObservableCollection<ProductoCarrito>();
 
         public CarritoViewModel()
         {
-            MostrarCarritoCommand = new RelayCommand(MostrarCarrito);
+            ArmarObjetosCarrito();
         }
 
-        private void MostrarCarrito()
+        private void ArmarObjetosCarrito()
         {
-            // Lógica para mostrar los productos en el carrito
-            foreach (var producto in CarritoCompra.ProductosCarrito)
+            foreach(var productoCarrito in CarritoCompra.ProductosCarrito)
             {
-                Console.WriteLine($"Producto: {producto.Name}, Precio: {producto.Precio}");
+                ProductosCarrito.Add(productoCarrito);
             }
+        }
+
+        [RelayCommand]
+        public void EliminarProductoCarrito(ProductoCarrito productoCarrito)
+        {
+            CarritoCompra.ProductosCarrito.Remove(productoCarrito);
+            ProductosCarrito.Remove(productoCarrito);
         }
     }
 }

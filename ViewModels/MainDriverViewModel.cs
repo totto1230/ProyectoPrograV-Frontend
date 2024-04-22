@@ -46,7 +46,6 @@ namespace Login1.ViewModels
             try
             {
                 int cantidadOrdenes = (OrdenesActivas.ordenes.CantidadProductosxOrden.Length), i = 0;
-                
 
                 var listaOrdenes = new List<OrdenA>();
                 while (i < cantidadOrdenes)
@@ -190,6 +189,7 @@ namespace Login1.ViewModels
                                 else
                                 {
                                     OrdenesActivas.ordenes = resOrden.ordenActiva;
+                                    GetOrden();
                                     //DisplayAlert(" ", OrdenesActivas.ordenes.NumeroCliente[0] + OrdenesActivas.ordenes.CostoViaje[0], " ");
                                 }
                             }

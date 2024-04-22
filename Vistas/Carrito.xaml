@@ -1,67 +1,78 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Login1.ViewModels"
+             xmlns:model="clr-namespace:Login1.Models"
              x:Class="Login1.Vistas.Carrito"
              Title="Carrito"
              x:DataType="viewmodel:CarritoViewModel">
-    <ContentPage.BindingContext>
-        <viewmodel:CarritoViewModel />
-    </ContentPage.BindingContext>
 
     <!-- Diseño de la página -->
-    <VerticalStackLayout>
-
-        <!-- Encabezado -->
-        <Label Text="Carrito"
-               VerticalOptions="Center"
-               HorizontalOptions="Center" />
-
-        <!-- Barra de navegación -->
-        <Frame BackgroundColor="LightBlue"
-               Padding="10"
-               HasShadow="True">
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center"
-                         VerticalOptions="End"
-                         Spacing="30">
-                <ImageButton Source="casa.png"
-                             HeightRequest="40"
-                             WidthRequest="90"
-                             Clicked="IrAMainPage_Clicked"
-                             HorizontalOptions="Center" />
-                <ImageButton Source="carrito.png"
-                             HeightRequest="40"
-                             WidthRequest="90"
-                             Clicked="IrACarrito_Clicked"
-                             HorizontalOptions="Center" />
-                <ImageButton Source="usuario.png"
-                             Clicked="IrAPerfil_Clicked"
-                             HeightRequest="40"
-                             WidthRequest="90"
-                             HorizontalOptions="Center" />
-            </StackLayout>
-        </Frame>
-
-        <!-- Botón para mostrar el carrito -->
-        <Button Text="Mostrar Carrito"
-        Command="{Binding MostrarCarritoCommand}"
-        IsEnabled="True" 
-            HorizontalOptions="Center"
-        Margin="0,20,0,0" />
-
-        <Button Text="Pagar" Clicked="IrAPaginaPago_Clicked" />
-
-        <!-- Lista de productos en el carrito -->
-        <CollectionView ItemsSource="{Binding ProductosEnCarrito}">
+    <Grid ColumnDefinitions="*,*"
+      ColumnSpacing="5"
+      RowDefinitions="*, Auto"
+      >
+        <CollectionView Grid.ColumnSpan="2"
+                    ItemsSource="{Binding ProductosCarrito}"
+                    SelectionMode="None">
+            <CollectionView.Footer>
+                <StackLayout Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20">
+                    <Button IsVisible="{Binding ProductosCarrito.Count}" Text="Pagar" Clicked="IrAPaginaPago_Clicked" /> 
+                    <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
+                            <ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" Clicked="IrAMainPage_Clicked"/>
+                            <ImageButton Source="carrito.png" HeightRequest="40" WidthRequest="90" Clicked="IrACarrito_Clicked"/>
+                            <ImageButton Source="usuario.png" HeightRequest="40" WidthRequest="90" Clicked="IrAPerfil_Clicked"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </CollectionView.Footer>
             <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10">
-                        <Label Text="{Binding Name}" />
-                        <Label Text="{Binding Precio}" />
-                        
-                    </StackLayout>
+                <DataTemplate x:DataType="model:ProductoCarrito">
+                    <Grid Padding="10" >
+                        <Frame HeightRequest="125" Padding="0">
+                            <Grid Padding="0"
+                              ColumnDefinitions="125, *, *">
+                                <Image Aspect="AspectFill"
+                               WidthRequest="125"
+                               HeightRequest="125">
+                                    <Image.Source>
+                                        <UriImageSource Uri="{Binding UrlImage}"
+                                         CacheValidity="1:00:00:0">
+                                        </UriImageSource>
+                                    </Image.Source>
+                                </Image>
+                                <VerticalStackLayout Grid.Column="1"
+                                                 Padding="10"
+                                                 VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" />
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="$"/>
+                                                <Span Text="{Binding Precio}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Cantidad: "/>
+                                                <Span Text="{Binding CantidadEnCarrito}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </VerticalStackLayout>
+                                <!-- Nivel de producto, bindear el command a nivel de ViewModel -->
+                                <Button x:Name="EliminarProducto" Grid.Column="2" Text="Eliminar del carrito" HorizontalOptions="Center" VerticalOptions="Center"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CarritoViewModel}}, Path=EliminarProductoCarritoCommand}"
+                                        CommandParameter="{Binding .}" 
+                                        LineBreakMode="WordWrap" />
+                                <!-- Pasar como parámetro al Command el objeto entero -->
+                            </Grid>
+                        </Frame>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
