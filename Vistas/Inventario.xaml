@@ -4,7 +4,7 @@
              x:Class="Login1.Vistas.Inventario"
              Title="Inventario">
 
-    <StackLayout Padding="20" Spacing="10">
+    <StackLayout Padding="20" Spacing="15">
 
         <Picker x:Name="Name"
                 Title="Producto"
@@ -14,18 +14,37 @@
                 Title="Categoría"
                 SelectedIndexChanged="Categoria_SelectedIndexChanged"/>
 
-        <Entry x:Name="Cantidad"
-               Keyboard="Numeric"
-               Placeholder="Cantidad (Ejemplo: 0 a 1000)" />
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Entry x:Name="Cantidad"
+                   Keyboard="Numeric"
+                   Placeholder="Cantidad (Ejemplo: 115)"
+                   VerticalOptions="CenterAndExpand" />
 
-        <Entry x:Name="Precio"
-               Keyboard="Numeric"
-               Placeholder="Precio (Ejemplo: $1000)" />
+            <Label Text="Unidades"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Small"
+                   TextColor="#777777"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Entry x:Name="Precio"
+                   Keyboard="Numeric"
+                   Placeholder="Precio (Ejemplo: $1000)"
+                   VerticalOptions="CenterAndExpand" />
+
+            <Label Text="Dólares"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Small"
+                   TextColor="#777777"/>
+        </StackLayout>
 
         <Button x:Name="Actualizar_Producto"
                 Clicked="Actualizar_Producto_Clicked"
                 Text="Actualizar"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                BackgroundColor="#007BFF"
+                TextColor="White"
+                CornerRadius="5"/>
 
     </StackLayout>
 
