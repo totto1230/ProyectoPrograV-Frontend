@@ -1,0 +1,52 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login1.Vistas.PaginaPago"
+             Title="PáginaPago">
+
+
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Título más grande, centrado y en negrita -->
+        <Label Text="Ingrese los datos"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="0,40,0,20" />
+
+        <StackLayout Grid.Row="1"
+                     Margin="20"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+            <Entry x:Name="nombreEntry"
+                   Placeholder="Nombre en la tarjeta"
+                   Margin="0,0,0,10" />
+            <Entry x:Name="numeroEntry"
+                   Placeholder="Número de tarjeta"
+                   Keyboard="Numeric"
+                   Margin="0,0,0,10" />
+            <Entry x:Name="fechaEntry"
+                   Placeholder="Fecha de expiración (MM/YY)"
+                   Keyboard="Numeric"
+                   Margin="0,0,0,10" />
+            <Entry x:Name="cvcEntry"
+                   Placeholder="CVC"
+                   Keyboard="Numeric"
+                   Margin="0,0,0,10" />
+
+            <Button Text="Pagar"
+                    Clicked="Pagar_Clicked"
+                    HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
+
+
