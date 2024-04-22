@@ -1,52 +1,85 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login1.Vistas.PaginaPago"
-             Title="PáginaPago">
+             Title="Página de Pago">
 
-
-    <Grid BackgroundColor="White">
+    <Grid BackgroundColor="#f5f5f5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
-        <!-- Título más grande, centrado y en negrita -->
-        <Label Text="Ingrese los datos"
-               FontSize="24"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               Margin="0,40,0,20" />
+        <!-- Payment Details -->
+        <StackLayout Grid.Row="0" Padding="20">
+            <Label Text="Detalles de Pago"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#333333"
+                   Margin="0,20,0,10" />
+            <Frame BackgroundColor="White"
+                   CornerRadius="8"
+                   Padding="10"
+                   Margin="0,0,0,20">
+                <StackLayout Spacing="10">
+                    <Entry x:Name="nombreEntry"
+                           Placeholder="Nombre en la tarjeta"
+                           TextColor="#333333" />
+                    <Entry x:Name="numeroEntry"
+                           Placeholder="Número de tarjeta"
+                           Keyboard="Numeric"
+                           TextColor="#333333" />
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Entry x:Name="dayEntry"
+                               Placeholder="DD"
+                               Keyboard="Numeric"
+                               TextColor="#333333"
+                               WidthRequest="50"
+                               MaxLength="2" />
+                        <!-- Limiting to 2 characters for DD -->
+                        <Label Text="/"
+                               FontSize="20"
+                               TextColor="#333333"
+                               VerticalOptions="Center" />
+                        <Entry x:Name="monthEntry"
+                               Placeholder="MM"
+                               Keyboard="Numeric"
+                               TextColor="#333333"
+                               WidthRequest="50"
+                               MaxLength="2" />
+                        <!-- Limiting to 2 characters for MM -->
+                        <Label Text="/"
+                               FontSize="20"
+                               TextColor="#333333"
+                               VerticalOptions="Center" />
+                        <Entry x:Name="anoEntry"
+                               Placeholder="YYYY"
+                               Keyboard="Numeric"
+                               TextColor="#333333"
+                               WidthRequest="50"
+                               MaxLength="4" />
+                        <!-- Limiting to 4 characters for YYYY -->
+                    </StackLayout>
 
-        <StackLayout Grid.Row="1"
-                     Margin="20"
-                     VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand">
-            <Entry x:Name="nombreEntry"
-                   Placeholder="Nombre en la tarjeta"
-                   Margin="0,0,0,10" />
-            <Entry x:Name="numeroEntry"
-                   Placeholder="Número de tarjeta"
-                   Keyboard="Numeric"
-                   Margin="0,0,0,10" />
-            <Entry x:Name="fechaEntry"
-                   Placeholder="Fecha de expiración (MM/YY)"
-                   Keyboard="Numeric"
-                   Margin="0,0,0,10" />
-            <Entry x:Name="cvcEntry"
-                   Placeholder="CVC"
-                   Keyboard="Numeric"
-                   Margin="0,0,0,10" />
+                    <Entry x:Name="cvcEntry"
+                           Placeholder="CVC"
+                           Keyboard="Numeric"
+                           TextColor="#333333" 
+                           IsPassword="True" 
+                           MaxLength="3" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
 
+        <!-- Pay Button -->
+        <StackLayout Grid.Row="1" Padding="20">
             <Button Text="Pagar"
                     Clicked="Pagar_Clicked"
+                    BackgroundColor="#007bff"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="8"
+                    Padding="15,10"
                     HorizontalOptions="FillAndExpand" />
         </StackLayout>
     </Grid>
-
 </ContentPage>
-
-

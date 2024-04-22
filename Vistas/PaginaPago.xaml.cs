@@ -12,13 +12,15 @@ public partial class PaginaPago : ContentPage
         // Obtener los valores de los campos de entrada
         string nombreTarjeta = nombreEntry.Text;
         string numeroTarjeta = numeroEntry.Text;
-        string fechaExpiracion = fechaEntry.Text;
+
+        string fechaExpiracionn = anoEntry.Text + "-" + monthEntry.Text + "-" + dayEntry.Text;
+        DateTime fechaExpiration = DateTime.Parse(fechaExpiracionn);
         string cvc = cvcEntry.Text;
 
         // Verificar si alguno de los campos está vacío
         if (string.IsNullOrWhiteSpace(nombreTarjeta) ||
             string.IsNullOrWhiteSpace(numeroTarjeta) ||
-            string.IsNullOrWhiteSpace(fechaExpiracion) ||
+            string.IsNullOrWhiteSpace(fechaExpiracionn) ||
             string.IsNullOrWhiteSpace(cvc))
         {
             // Mostrar mensaje de error si algún campo está vacío
