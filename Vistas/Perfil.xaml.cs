@@ -8,6 +8,7 @@ public partial class Perfil : ContentPage
 	public Perfil()
 	{
 		InitializeComponent();
+        Profile_Picture.Source = Session.imageUrl;
         Name.Text = Session.name;
         Email.Text = Session.email;
     }

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Serialization;
 using Login1.Utilidades;
+using Login1.Models.Entidades;
 
 
 namespace Login1.Vistas;
@@ -14,6 +15,7 @@ namespace Login1.Vistas;
 public partial class CrearNuevo : ContentPage
 {
     string url = Url.url;
+    string number;
 
     public CrearNuevo()
 	{
@@ -25,7 +27,6 @@ public partial class CrearNuevo : ContentPage
     "Usuario Regular",
     "Driver"
 };
-
     }
 
     private async void Registrar_Clicked(object sender, EventArgs e)
@@ -95,7 +96,78 @@ public partial class CrearNuevo : ContentPage
 
     private async void Upload_Button_Clicked(object sender, EventArgs e)
     {
-        
-    }
+        try
+        {
+            PickOptions options = new PickOptions()
+            {
+                PickerTitle = "Select a file"
+            };
 
+
+            var result = await FilePicker.Default.PickAsync(options);
+            using var fileStream = File.OpenRead(result.FullPath);
+            byte[] byteArray;
+
+            using (var memoryStream = new  MemoryStream())
+            {
+                await fileStream.CopyToAsync(memoryStream);
+                byteArray = memoryStream.ToArray();
+            }
+
+            if (byteArray == null)
+            {
+                Session.imageUrl = "https://storage.googleapis.com/proyectoprograv/Profile/usuario.png";
+            }
+            else
+            {
+                RequestUploadImage req = new RequestUploadImage();
+                req.image = new Models.ImageUpload();
+                string numeroIngresado = NumberTxt.Text;
+                req.image.Name = numeroIngresado;
+                req.image.File = byteArray;
+                req.image.Type = "image/jpg";
+                HttpClient httpClient = new HttpClient();
+
+                try
+                {
+                    var jsonContent = new StringContent(JsonConvert.SerializeObject(req), Encoding.UTF8, "application/json");
+                    var response = await httpClient.PostAsync(url + "api/Admin/UploadImage", jsonContent);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ResponseUploadImage res = new ResponseUploadImage();
+                        var responseIU = await response.Content.ReadAsStringAsync();
+                        res = JsonConvert.DeserializeObject<ResponseUploadImage>(responseIU);
+                        res.Errors = new List<string>();
+
+                        if (res.Result)
+                        {
+                            Session.imageUrl = res.url;
+                            await DisplayAlert("Success! ", res.Message.ToString(), "GO!");
+                        }
+                        else
+                        {
+                            await DisplayAlert("Failed! ", res.Errors.ToString(), "Ok!");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Failed! ", "TRY AGAIN LATER!", "Ok!");
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+    }
 }

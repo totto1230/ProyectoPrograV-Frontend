@@ -15,6 +15,8 @@ namespace Login1.Utilidades
         public static string email { get; set; }
 
         public static string number { get; set; }
+
+        public static string imageUrl { get; set; }
         //public void Logout()
         //{
         //    name = null;

@@ -8,6 +8,7 @@ public partial class PerfilDriver : ContentPage
     public PerfilDriver()
     {
         InitializeComponent();
+        Profile_Picture.Source = Session.imageUrl;
         Name.Text = Session.name;
         Email.Text = Session.email;
     }
