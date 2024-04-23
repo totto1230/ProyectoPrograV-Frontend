@@ -42,8 +42,7 @@ public partial class PaginaPago : ContentPage
             RequestOrden req = new RequestOrden();
             req.order = new Orden();
             req.order.Numero = Session.number;
-            ProductosCarrito.productosCarrito = new Productos();
-            req.order.IdProducto = ProductosCarrito.productosCarrito.IdProducto;
+            req.order.IdProducto = IdsCarrito.ids;
             req.order.Cantidad = llenarCantidad();
             req.order.coordenadas = [2.0, 3.0];
             req.order.NumeroTar = numeroTarjeta;
@@ -75,7 +74,7 @@ public partial class PaginaPago : ContentPage
                     }
                     else
                     {
-                        DisplayAlert("Failed! ", res.Errors.ToString(), "Ok!");
+                        await DisplayAlert("Failed! ", "Review your card details and make sure you have enough money!", "Ok");
                     }
                 }
                 else
@@ -95,10 +94,10 @@ public partial class PaginaPago : ContentPage
 
     public int?[] llenarCantidad()
     {
-        int?[] arrayCantidad = new int?[ProductosCarrito.productosCarrito.IdProducto.Length];
+        int?[] arrayCantidad = new int?[IdsCarrito.ids.Length];
         int i = 0;
 
-        while (i < ProductosCarrito.productosCarrito.IdProducto.Length)
+        while (i < IdsCarrito.ids.Length)
         {
             arrayCantidad[i] = 1;
             i++;

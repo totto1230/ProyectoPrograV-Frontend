@@ -7,14 +7,13 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Serialization;
 using Login1.Utilidades;
-using Login1.Services;
+
 
 namespace Login1.Vistas;
 
 public partial class CrearNuevo : ContentPage
 {
     string url = Url.url;
-    UploadImage uploadImage { get; set; }
 
     public CrearNuevo()
 	{
@@ -26,7 +25,6 @@ public partial class CrearNuevo : ContentPage
     "Usuario Regular",
     "Driver"
 };
-        uploadImage = new UploadImage();
 
     }
 
@@ -97,21 +95,7 @@ public partial class CrearNuevo : ContentPage
 
     private async void Upload_Button_Clicked(object sender, EventArgs e)
     {
-        var img = await uploadImage.OpenMediaPickerAsync();
-
-        var imagefile = await uploadImage.Upload(img);
-
-        ImageUploaded imagee = new ImageUploaded();
-        //imagee.image = imagefile;
-        //uploadImage.Source = ImageSource.FromStream(() =>
-        //    uploadImage.ByteArrayToStream(uploadImage.StringToByteBase64(imagefile.byteBase64))
-        //);
-
+        
     }
 
-    //private void TypeU_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    char typeU = GetTypeU();
-    //    // Now you can use 'typeU' as needed
-    //}
 }

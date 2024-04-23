@@ -120,6 +120,10 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	</ItemGroup>
+
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadUnhandledDeviceExceptionLogin1HideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
