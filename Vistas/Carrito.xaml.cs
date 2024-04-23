@@ -1,5 +1,7 @@
 using Login1.Models.Entidades;
+using Login1.Utilidades;
 using Login1.ViewModels;
+using System.Text;
 
 namespace Login1.Vistas;
 

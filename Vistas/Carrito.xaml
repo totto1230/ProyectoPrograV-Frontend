@@ -16,7 +16,7 @@
                     SelectionMode="None">
             <CollectionView.Footer>
                 <StackLayout Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End" Spacing="20">
-                    <Button IsVisible="{Binding ProductosCarrito.Count}" Text="Pagar" Clicked="IrAPaginaPago_Clicked" /> 
+                    <Button IsVisible="{Binding ProductosCarrito.Count}" Text="Pagar" Clicked="IrAPaginaPago_Clicked" />
                     <Frame BackgroundColor="LightBlue" Padding="10" HasShadow="True" CornerRadius="10">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Spacing="30">
                             <ImageButton Source="casa.png" HeightRequest="40" WidthRequest="90" Clicked="IrAMainPage_Clicked"/>
