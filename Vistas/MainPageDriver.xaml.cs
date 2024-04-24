@@ -16,11 +16,6 @@ public partial class MainPageDriver : ContentPage
         BindingContext = new MainDriverViewModel();
     }
 
-    private async void PerfilDriver_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new PerfilDriver());
-    }
-
     private async void LogOut_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Login());
