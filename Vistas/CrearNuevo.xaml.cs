@@ -15,6 +15,7 @@ namespace Login1.Vistas;
 public partial class CrearNuevo : ContentPage
 {
     string url = Url.url;
+    string urlURi = Url.imageURl;
     string number;
 
     public CrearNuevo()
@@ -131,7 +132,7 @@ public partial class CrearNuevo : ContentPage
                 try
                 {
                     var jsonContent = new StringContent(JsonConvert.SerializeObject(req), Encoding.UTF8, "application/json");
-                    var response = await httpClient.PostAsync(url + "api/Admin/UploadImage", jsonContent);
+                    var response = await httpClient.PostAsync(urlURi + "api/Admin/UploadImage", jsonContent);
 
                     if (response.IsSuccessStatusCode)
                     {
