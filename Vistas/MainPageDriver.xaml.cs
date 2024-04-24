@@ -25,4 +25,9 @@ public partial class MainPageDriver : ContentPage
     {
         await Navigation.PushAsync(new Login());
     }
+
+    private async void IrAPerfil_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PerfilDriver());
+    }
 }
